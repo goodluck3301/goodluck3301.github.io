@@ -4,52 +4,71 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Smart Note Privacy Policy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary: #007acc;
+      --background: #f4f6f8;
+      --foreground: #fff;
+      --text: #333;
+      --heading: #111;
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
     body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
+      margin: 20px;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--background);
+      color: var(--text);
     }
 
     .container {
-      max-width: 700px;
-      margin: 60px auto;
-      padding: 30px 20px;
-      background-color: #fff;
+      max-width: 760px;
+      margin: 60px auto; 
+      padding: 36px 32px; 
+      background-color: var(--foreground);
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      box-shadow: var(--shadow);
     }
 
+
     h1 {
-      font-size: 1.8em;
-      color: #007acc;
-      margin-bottom: 20px;
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 24px;
     }
 
     p {
-      line-height: 1.6;
-      font-size: 1.05em;
-      margin-bottom: 16px;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 20px;
     }
 
     strong {
-      color: #000;
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: var(--heading);
     }
 
-    @media (max-width: 480px) {
+    hr {
+      border: none;
+      border-top: 1px solid #e0e0e0;
+      margin: 30px 0;
+    }
+
+    @media (max-width: 600px) {
       .container {
-        margin: 30px 15px;
-        padding: 20px 15px;
+        margin: 30px 16px;
+        padding: 24px 18px;
       }
 
       h1 {
-        font-size: 1.5em;
+        font-size: 1.6rem;
       }
 
       p {
-        font-size: 1em;
+        font-size: 1rem;
       }
     }
   </style>
@@ -57,34 +76,42 @@
 <body>
   <div class="container">
     <h1>Smart Note Privacy Policy</h1>
+
+    <p>Smart Note respects and protects your privacy. This policy explains how your information is handled within our application.</p>
+
+    <hr />
+
     <p>
-      At Smart Note, we are committed to protecting your privacy. This policy outlines how your data is handled within the app.
+      <strong>1. Local Data Storage</strong>
+      All notes and personal content are stored locally on your device. The app does not automatically upload or share any user data with external servers.
     </p>
 
     <p>
-      <strong>Local Data Storage:</strong><br />
-      All notes and personal information are stored locally on your device. No data is automatically uploaded or shared with external servers unless explicitly requested by you.
+      <strong>2. No Advertising or Analytics</strong>
+      Smart Note does not include any advertising, analytics, or third-party tracking tools. Your data is never used for profiling or advertising purposes.
     </p>
 
     <p>
-      <strong>No Ads or Trackers:</strong><br />
-      The app does not contain any advertisements, analytics, or tracking mechanisms. Your activity remains private and is not monitored.
+      <strong>3. Optional AI Summarization Feature</strong>
+      If you choose to use the AI assistant, your selected text is securely sent to a third-party AI provider (such as OpenAI or Google Gemini) solely for the purpose of generating a summary. This feature is fully optional and only activated when you request it.
     </p>
 
     <p>
-      <strong>AI-Powered Summarization (Optional Feature):</strong><br />
-      If you choose to use the AI assistant feature to summarize your notes, the selected content will be securely transmitted to a third-party language model provider (e.g., Google Gemini or OpenAI ChatGPT) for processing. This action only occurs when you explicitly request a summary. No content is shared without your consent.
+      <strong>4. Use of Third-Party APIs</strong>
+      The app may use APIs provided by external services (e.g., OpenAI, Google). We recommend reviewing their privacy policies to understand how they process data.
     </p>
 
     <p>
-      <strong>Third-Party Providers:</strong><br />
-      The AI summarization feature may utilize APIs from external providers such as Google or OpenAI. We recommend reviewing their respective privacy policies for more details on how they handle submitted data.
+      <strong>5. Your Control</strong>
+      You can use all Smart Note features without ever using the AI assistant. No data is collected or sent externally unless you explicitly opt in.
     </p>
 
     <p>
-      <strong>Your Control:</strong><br />
-      Use of the AI assistant is entirely optional. You may continue to use all core note-taking features without ever engaging with the AI assistant.
+      <strong>6. Data Collection</strong>
+      We do not collect or store personal data. No user-identifiable information is transmitted from your device unless you explicitly choose to do so.
     </p>
+
+    <hr />
 
     <p>
       By using Smart Note, you are assured that your privacy is respected and your data remains under your control.
