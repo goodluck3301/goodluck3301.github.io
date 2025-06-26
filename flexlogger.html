@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlexLogger - Flexible Android Logging Library</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary-color: #10b981;
+            --accent-color: #f59e0b;
+            --bg-color: #0f172a;
+            --surface-color: #1e293b;
+            --surface-light: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23334155" stroke-width="0.5" opacity="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 1;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 6rem 0;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: var(--surface-color);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+            border-color: var(--primary-color);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Code Block */
+        .code-block {
+            background: var(--surface-color);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .code-title {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .copy-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        pre {
+            margin: 0;
+            overflow-x: auto;
+        }
+
+        /* Installation Steps */
+        .install-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+            color: white;
+        }
+
+        .step h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .step p {
+            color: var(--text-secondary);
+        }
+
+        /* API Reference */
+        .api-grid {
+            display: grid;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .api-section {
+            background: var(--surface-color);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .api-section h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .method-list {
+            list-style: none;
+        }
+
+        .method-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+            font-family: 'Fira Code', monospace;
+            color: var(--text-secondary);
+        }
+
+        .method-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--surface-color);
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 0;
+            text-align: center;
+            margin-top: 6rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section h2 {
+                font-size: 2.5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .install-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--surface-color);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-code"></i>
+                FlexLogger
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#installation">Installation</a></li>
+                <li><a href="#docs">Documentation</a></li>
+                <li><a href="#examples">Examples</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="floating">FlexLogger</h1>
+            <p class="hero-subtitle">A flexible, powerful, and beautiful logging library for Android applications</p>
+            <div class="hero-buttons">
+                <a href="#installation" class="btn btn-primary">
+                    <i class="fas fa-download"></i>
+                    Get Started
+                </a>
+                <a href="#docs" class="btn btn-secondary">
+                    <i class="fas fa-book"></i>
+                    Documentation
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <!-- Features Section -->
+        <section id="features" class="section">
+            <h2>Powerful Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-cogs"></i></div>
+                    <h3>Flexible Configuration</h3>
+                    <p>Customize log levels, formats, and destinations with an intuitive Kotlin DSL. Configure once, log everywhere.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-file-alt"></i></div>
+                    <h3>Multiple Destinations</h3>
+                    <p>Log to Logcat, files, or custom destinations. Built-in file rotation and crash-safe operations.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-paint-brush"></i></div>
+                    <h3>Pretty Printing</h3>
+                    <p>Beautiful JSON and XML formatting with automatic indentation and syntax highlighting in logs.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Thread Safe</h3>
+                    <p>Concurrent logging operations are handled safely across multiple threads without data corruption.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
+                    <h3>Smart Rotation</h3>
+                    <p>Automatic log file rotation based on size limits. Never worry about storage issues again.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-rocket"></i></div>
+                    <h3>High Performance</h3>
+                    <p>Optimized for minimal overhead with lazy evaluation and efficient string operations.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Installation Section -->
+        <section id="installation" class="section">
+            <h2>Quick Installation</h2>
+            
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-title">Gradle (Kotlin DSL)</span>
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                </div>
+                <pre><code class="language-kotlin">dependencies {
+    implementation("com.github.goodluck3301:FlexLogger:flexlogger-1.0")
+}</code></pre>
+            </div>
+
+            <div class="install-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Add Dependency</h3>
+                    <p>Add FlexLogger to your app's build.gradle file</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Initialize</h3>
+                    <p>Configure FlexLogger in your Application class</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Start Logging</h3>
+                    <p>Use the flexible logging functions throughout your app</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Documentation Section -->
+        <section id="docs" class="section">
+            <h2>Documentation</h2>
+            
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-title">Basic Setup</span>
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                </div>
+                <pre><code class="language-kotlin">// In your Application class
+FlexLogger.init {
+    enabled = true
+    globalTagPrefix = "MyApp"
+    minLevel = LogLevel.DEBUG
+    showTimestamp = true
+    showThreadInfo = true
+    
+    // Add destinations
+    logcat()
+    file(
+        context = this@MyApplication,
+        fileName = "app_log.txt",
+        maxFileSizeMb = 5
+    )
+}</code></pre>
+            </div>
+
+            <div class="api-grid">
+                <div class="api-section">
+                    <h3>Logging Functions</h3>
+                    <ul class="method-list">
+                        <li>flexLogV(tag, throwable) { message }</li>
+                        <li>flexLogD(tag, throwable) { message }</li>
+                        <li>flexLogI(tag, throwable) { message }</li>
+                        <li>flexLogW(tag, throwable) { message }</li>
+                        <li>flexLogE(tag, throwable) { message }</li>
+                        <li>flexLogWtf(tag, throwable) { message }</li>
+                    </ul>
+                </div>
+                
+                <div class="api-section">
+                    <h3>Pretty Printing</h3>
+                    <ul class="method-list">
+                        <li>flexLogJson(tag, level) { jsonString }</li>
+                        <li>flexLogXml(tag, level) { xmlString }</li>
+                        <li>FlexLogger.json(tag, level, jsonString)</li>
+                        <li>FlexLogger.xml(tag, level, xmlString)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Examples Section -->
+        <section id="examples" class="section">
+            <h2>Usage Examples</h2>
+            
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-title">Basic Logging</span>
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                </div>
+                <pre><code class="language-kotlin">class MainActivity : AppCompatActivity() {
+    private val TAG = "MainActivity"
+    
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        
+        // Basic logging
+        flexLogI(TAG) { "Activity created successfully" }
+        flexLogD(TAG) { "Debug info: ${someVariable}" }
+        
+        // Error with exception
+        try {
+            riskyOperation()
+        } catch (e: Exception) {
+            flexLogE(TAG, e) { "Operation failed" }
+        }
+        
+        // Pretty print JSON
+        val jsonResponse = """{"user": "John", "id": 123}"""
+        flexLogJson(TAG) { jsonResponse }
+    }
+}</code></pre>
+            </div>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-title">Custom Destination</span>
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                </div>
+                <pre><code class="language-kotlin">class RemoteLogDestination : LogDestination {
+    override val id = "remote_logger"
+    
+    override fun send(logMessage: LogMessage, formattedMessage: String) {
+        if (logMessage.level >= LogLevel.ERROR) {
+            sendToServer(formattedMessage)
+        }
+    }
+}
+
+// Add to configuration
+FlexLogger.init {
+    addDestination(RemoteLogDestination())
+}</code></pre>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fas fa-book"></i></a>
+            </div>
+            <p>&copy; 2024 FlexLogger. Made with ❤️ for the Android community.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-kotlin.min.js"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                const offsetTop = target.offsetTop - 80;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Update active navigation link on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Animate sections on scroll
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - window.innerHeight + 100;
+                if (window.scrollY >= sectionTop) {
+                    section.classList.add('visible');
+                }
+            });
+
+            // Update navbar background on scroll
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(15, 23, 42, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(15, 23, 42, 0.95)';
+            }
+        });
+
+        // Copy code functionality
+        function copyCode(button) {
+            const codeBlock = button.closest('.code-block').querySelector('code');
+            const text = codeBlock.textContent;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.textContent;
+                button.textContent = 'Copied!';
+                button.style.background = '#10b981';
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = '#6366f1';
+                }, 2000);
+            });
+        }
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
