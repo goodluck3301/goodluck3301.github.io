@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -283,6 +284,7 @@
             color: var(--code-text);
             padding: 2rem;
             border-radius: 1rem;
+            border-radius: 1rem;
             overflow-x: auto;
             font-family: 'Fira Code', monospace;
             position: relative;
@@ -429,6 +431,62 @@
             gap: 0.5rem;
         }
 
+        /* Changelog Section */
+        .changelog-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .changelog-entry {
+            background: var(--secondary);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid var(--border);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .changelog-entry:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .changelog-entry h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .changelog-date {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text-light);
+        }
+
+        .changelog-description {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .changelog-entry .feature-list li:before {
+            content: "•";
+            color: var(--primary);
+        }
+
+        .changelog-expand {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+
         /* Footer */
         .footer {
             background: var(--code-bg);
@@ -489,6 +547,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -500,6 +559,7 @@
         }
     </style>
 </head>
+
 <body>
     <header class="header">
         <nav class="nav container">
@@ -509,6 +569,7 @@
                 <li><a href="#installation">Installation</a></li>
                 <li><a href="#docs">Documentation</a></li>
                 <li><a href="#examples">Examples</a></li>
+                <li><a href="#changelog">Changelog</a></li>
             </ul>
         </nav>
     </header>
@@ -517,7 +578,7 @@
         <div class="container">
             <h1>FlexLogger</h1>
             <p>A flexible, configurable, and powerful logging utility for Android applications</p>
-            
+
             <div class="badges">
                 <span class="badge">🤖 Android</span>
                 <span class="badge">🎯 Kotlin</span>
@@ -598,7 +659,8 @@
 
                     <div id="kotlin-content" class="tab-content active">
                         <div class="code-block" data-lang="kotlin">
-<pre>//settings.gradle
+                            <pre>
+//settings.gradle
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -609,14 +671,16 @@ dependencyResolutionManagement {
 
 // App module
 dependencies {
-    implementation("com.github.goodluck3301:FlexLogger:flexlogger-1.0")
-}</pre>
+    implementation("com.github.goodluck3301:FlexLogger:flexlogger-1.1")
+}
+</pre>
                         </div>
                     </div>
 
                     <div id="groovy-content" class="tab-content">
                         <div class="code-block" data-lang="groovy">
-<pre>//settings.gradle
+                            <pre>
+//settings.gradle
 dependencyResolutionManagement {
   repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
   repositories {
@@ -627,8 +691,9 @@ dependencyResolutionManagement {
 
 // App module
 dependencies {
-    implementation 'com.github.goodluck3301:FlexLogger:flexlogger-1.0'
-}</pre>
+    implementation 'com.github.goodluck3301:FlexLogger:flexlogger-1.1'
+}
+</pre>
                         </div>
                     </div>
                 </div>
@@ -638,10 +703,11 @@ dependencies {
         <section class="section">
             <div class="container">
                 <h2>⚡ Quick Start</h2>
-                
+
                 <h3>1. Initialize in your Application class</h3>
                 <div class="code-block" data-lang="kotlin">
-<pre>class MyApplication : Application() {
+                    <pre>
+class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         
@@ -661,12 +727,13 @@ dependencies {
             )
         }
     }
-}</pre>
+}
+</pre>
                 </div>
 
                 <h3>2. Register in AndroidManifest.xml</h3>
                 <div class="code-block" data-lang="xml">
-<pre>&lt;application
+                    <pre>&lt;application
     android:name=".MyApplication"
     ... &gt;
 &lt;/application&gt;</pre>
@@ -674,27 +741,29 @@ dependencies {
 
                 <h3>3. Start logging!</h3>
                 <div class="code-block" data-lang="kotlin">
-<pre>class MainActivity : AppCompatActivity() {
+                    <pre>
+class MainActivity : AppCompatActivity() {
     private val TAG = "MainActivity"
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         
         // Basic logging
-        flexLogI(TAG) { "Activity created successfully" }
-        flexLogD(TAG) { "Debug information: ${someVariable}" }
+        log_v(TAG, "Activity created successfully")
+        log_d(TAG, "Debug information: ${someVariable}")
         
         // Error logging with exception
         try {
             riskyOperation()
         } catch (e: Exception) {
-            flexLogE(TAG, e) { "Operation failed" }
+            log_e(TAG, "Operation failed")
         }
         
         // Pretty print JSON
-        flexLogJson(TAG) { """{"user": "John", "id": 123}""" }
+        log_json(TAG, """{"user": "John", "id": 123}""")
     }
-}</pre>
+}
+</pre>
                 </div>
             </div>
         </section>
@@ -702,7 +771,7 @@ dependencies {
         <section id="docs" class="section">
             <div class="container">
                 <h2>📚 Documentation</h2>
-                
+
                 <h3>Log Levels</h3>
                 <table class="doc-table">
                     <thead>
@@ -715,32 +784,32 @@ dependencies {
                     <tbody>
                         <tr>
                             <td><code>VERBOSE</code></td>
-                            <td><code>flexLogV()</code></td>
+                            <td><code>log_v()</code></td>
                             <td>Detailed information for debugging</td>
                         </tr>
                         <tr>
                             <td><code>DEBUG</code></td>
-                            <td><code>flexLogD()</code></td>
+                            <td><code>log_d()</code></td>
                             <td>Debug information for development</td>
                         </tr>
                         <tr>
                             <td><code>INFO</code></td>
-                            <td><code>flexLogI()</code></td>
+                            <td><code>log_i()</code></td>
                             <td>General information messages</td>
                         </tr>
                         <tr>
                             <td><code>WARN</code></td>
-                            <td><code>flexLogW()</code></td>
+                            <td><code>log_w()</code></td>
                             <td>Warning messages for potential issues</td>
                         </tr>
                         <tr>
                             <td><code>ERROR</code></td>
-                            <td><code>flexLogE()</code></td>
+                            <td><code>log_e()</code></td>
                             <td>Error messages for failures</td>
                         </tr>
                         <tr>
                             <td><code>ASSERT</code></td>
-                            <td><code>flexLogWtf()</code></td>
+                            <td><code>log_wtf()</code></td>
                             <td>Critical errors that should never happen</td>
                         </tr>
                     </tbody>
@@ -753,7 +822,8 @@ dependencies {
                     </div>
                     <div class="expandable-content">
                         <div class="code-block" data-lang="kotlin">
-<pre>FlexLogger.init {
+                            <pre>
+FlexLogger.init {
     // Global settings
     enabled = true                              // Enable/disable all logging
     globalTagPrefix = "MyApp"                   // Prefix for all log tags
@@ -773,7 +843,8 @@ dependencies {
         directory = "logs",                     // Subdirectory in cache
         maxFileSizeMb = 10                      // Max size before rotation
     )
-}</pre>
+}
+</pre>
                         </div>
                     </div>
                 </div>
@@ -786,25 +857,29 @@ dependencies {
                     <div class="expandable-content">
                         <h4>Basic Logging</h4>
                         <div class="code-block" data-lang="kotlin">
-<pre>// Standard logging
+                            <pre>
+// Standard logging
 FlexLogger.d("TAG", "Debug message")
 FlexLogger.i("TAG", "Info message")
 FlexLogger.e("TAG", "Error message", exception)
 
 // Convenience functions with lambda (lazy evaluation)
-flexLogD("TAG") { "Expensive string operation: ${computeValue()}" }
-flexLogE("TAG", exception) { "Error occurred during ${operation}" }</pre>
+log_d("TAG", "Expensive string operation: ${computeValue()}")
+log_e("TAG", exception, "Error occurred during ${operation}")
+</pre>
                         </div>
 
                         <h4>Pretty Printing</h4>
                         <div class="code-block" data-lang="kotlin">
-<pre>// JSON formatting
-flexLogJson("API") { responseJson }
+                            <pre>
+// JSON formatting
+log_json("API", responseJson)
 FlexLogger.json("API", LogLevel.INFO, jsonString)
 
 // XML formatting
-flexLogXml("Parser") { xmlContent }
-FlexLogger.xml("Parser", LogLevel.DEBUG, xmlString)</pre>
+log_xml("Parser", xmlContent)
+FlexLogger.xml("Parser", LogLevel.DEBUG, xmlString)
+</pre>
                         </div>
                     </div>
                 </div>
@@ -814,30 +889,33 @@ FlexLogger.xml("Parser", LogLevel.DEBUG, xmlString)</pre>
         <section id="examples" class="section">
             <div class="container">
                 <h2>💡 Examples</h2>
-                
+
                 <h3>Basic Usage</h3>
                 <div class="code-block" data-lang="kotlin">
-<pre>class NetworkManager {
+                    <pre>
+class NetworkManager {
     private val TAG = "NetworkManager"
     
-    suspend fun fetchData(): Result&lt;Data&gt; {
-        flexLogI(TAG) { "Starting data fetch operation" }
+    suspend fun fetchData(): Result<Data> {
+        log_i(TAG, "Starting data fetch operation" )
         
         return try {
             val response = apiService.getData()
-            flexLogJson(TAG, LogLevel.DEBUG) { response.body() }
+            log_json(TAG, LogLevel.DEBUG, response.body())
             Result.success(response.data)
         } catch (e: Exception) {
-            flexLogE(TAG, e) { "Failed to fetch data from API" }
+            log_e(TAG, e, "Failed to fetch data from API")
             Result.failure(e)
         }
     }
-}</pre>
+}
+</pre>
                 </div>
 
                 <h3>Custom Log Destination</h3>
                 <div class="code-block" data-lang="kotlin">
-<pre>class RemoteLogDestination(private val apiEndpoint: String) : LogDestination {
+                    <pre>
+class RemoteLogDestination(private val apiEndpoint: String) : LogDestination {
     override val id = "remote_logger"
     
     override fun send(logMessage: LogMessage, formattedMessage: String) {
@@ -855,7 +933,8 @@ FlexLogger.xml("Parser", LogLevel.DEBUG, xmlString)</pre>
 // Usage in configuration
 FlexLogger.init {
     addDestination(RemoteLogDestination("https://api.example.com/logs"))
-}</pre>
+}
+</pre>
                 </div>
             </div>
         </section>
@@ -867,7 +946,7 @@ FlexLogger.init {
                     <div class="arch-diagram">
                         <div class="arch-box">
                             <strong>Application</strong><br>
-                            <small>flexLogI(...)<br>flexLogE(...)<br>flexLogJson()</small>
+                            <small>log_i(...)<br>log_e(...)<br>log_json()</small>
                         </div>
                         <div class="arch-arrow">→</div>
                         <div class="arch-box">
@@ -891,10 +970,13 @@ FlexLogger.init {
                     <div class="practice-card do">
                         <h3>✅ Do's</h3>
                         <ul class="feature-list">
-                            <li><strong>Initialize early</strong>: Set up FlexLogger in your Application's onCreate()</li>
+                            <li><strong>Initialize early</strong>: Set up FlexLogger in your Application's onCreate()
+                            </li>
                             <li><strong>Use meaningful tags</strong>: Create constants for tags in each class</li>
-                            <li><strong>Leverage lazy evaluation</strong>: Use lambda functions for expensive string operations</li>
-                            <li><strong>Log at appropriate levels</strong>: Use DEBUG for development, INFO for important events</li>
+                            <li><strong>Leverage lazy evaluation</strong>: Use lambda functions for expensive string
+                                operations</li>
+                            <li><strong>Log at appropriate levels</strong>: Use DEBUG for development, INFO for
+                                important events</li>
                             <li><strong>Handle exceptions</strong>: Always log exceptions with context</li>
                         </ul>
                     </div>
@@ -902,17 +984,21 @@ FlexLogger.init {
                     <div class="practice-card dont">
                         <h3>❌ Don'ts</h3>
                         <ul class="feature-list">
-                            <li><strong>Don't log sensitive data</strong>: Avoid logging passwords, tokens, or personal information</li>
+                            <li><strong>Don't log sensitive data</strong>: Avoid logging passwords, tokens, or personal
+                                information</li>
                             <li><strong>Don't over-log</strong>: Excessive logging can impact performance</li>
-                            <li><strong>Don't forget to disable</strong>: Consider disabling verbose logging in production</li>
-                            <li><strong>Don't ignore file sizes</strong>: Monitor log file sizes to prevent storage issues</li>
+                            <li><strong>Don't forget to disable</strong>: Consider disabling verbose logging in
+                                production</li>
+                            <li><strong>Don't ignore file sizes</strong>: Monitor log file sizes to prevent storage
+                                issues</li>
                         </ul>
                     </div>
                 </div>
 
                 <h3>🔒 Production Configuration</h3>
                 <div class="code-block" data-lang="kotlin">
-<pre>FlexLogger.init {
+                    <pre>
+FlexLogger.init {
     enabled = !BuildConfig.DEBUG // Disable in release builds
     minLevel = LogLevel.INFO      // Only log important messages
     showThreadInfo = false        // Reduce log verbosity
@@ -921,7 +1007,74 @@ FlexLogger.init {
         logcat()
         file(context = this@MyApplication, maxFileSizeMb = 5)
     }
-}</pre>
+}
+</pre>
+                </div>
+            </div>
+        </section>
+
+        <section id="changelog" class="section">
+            <div class="container">
+                <h2>📜 Changelog</h2>
+                <div class="changelog-grid">
+                    <div class="changelog-entry">
+                        <h3>v1.1.0 <span class="changelog-date">2025</span></h3>
+                        <p class="changelog-description">Enhanced logging capabilities and stability improvements</p>
+                        <ul class="feature-list">
+                            <li><strong>Features</strong>:
+                                <ul class="feature-list">
+                                    <li>Added global uncaught exception handler to log crashes (Levon, 03.07.2025)</li>
+                                    <li>Safely trim log file using temp file to prevent data loss (Levon, 02.07.2025)
+                                    </li>
+                                    <li>Validate 'maxFileSizeMb' does not exceed allowed limit (Levon, 02.07.2025)</li>
+                                    <li>Make log file path dynamic (Levon, 28.06.2025)</li>
+                                </ul>
+                            </li>
+                            <li><strong>Refactors</strong>:
+                                <ul class="feature-list">
+                                    <li>Deprecated old flexLog* functions in favor of log_* versions (Levon, 02.07.2025)
+                                    </li>
+                                    <li>Renamed log functions to use log_ prefix for easier use (Levon, 02.07.2025)</li>
+                                    <li>Extracted and organized utility functions into helpers folder (Levon,
+                                        01.07.2025)</li>
+                                    <li>Split log writing and trimming into separate functions for clarity and
+                                        performance (Levon, 01.07.2025)</li>
+                                </ul>
+                            </li>
+                            <li><strong>Tests</strong>:
+                                <ul class="feature-list">
+                                    <li>Added concurrent logging test for 1MB log file size overflow (Levon, 02.07.2025)
+                                    </li>
+                                    <li>Added concurrency test to verify thread-safe logging behavior (Levon,
+                                        01.07.2025)</li>
+                                    <li>Added unit tests for FlexLogger (Levon, 01.07.2025)</li>
+                                    <li>Added unit tests for FileDestination class (Levon, 30.06.2025)</li>
+                                    <li>Added file logging and log size limit tests for FlexLogger (Levon, 29.06.2025)
+                                    </li>
+                                    <li>Added basic unit tests (Levon, 28.06.2025)</li>
+                                </ul>
+                            </li>
+                            <li><strong>Chores</strong>:
+                                <ul class="feature-list">
+                                    <li>Added testing dependencies (Levon, 28.06.2025)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="changelog-entry">
+                        <h3>v1.0.0 <span class="changelog-date">June 15, 2025</span></h3>
+                        <p class="changelog-description">Initial release of FlexLogger</p>
+                        <ul class="feature-list">
+                            <li>Added core logging functionality with Logcat support</li>
+                            <li>Implemented file logging with rotation</li>
+                            <li>Introduced pretty printing for JSON and XML</li>
+                            <li>Added customizable configuration via Kotlin DSL</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="changelog-expand">
+                    <a href="#" class="btn btn-secondary" onclick="toggleAllChangelogs()">Show All Versions</a>
                 </div>
             </div>
         </section>
@@ -931,13 +1084,14 @@ FlexLogger.init {
         <div class="container">
             <div class="footer-links">
                 <a href="https://github.com/goodluck3301/FlexLogger">GitHub</a>
+                <!-- <a href="https://github.com/goodluck3301/FlexLogger/blob/main/CHANGELOG.md">Changelog</a> -->
                 <a href="https://github.com/goodluck3301/FlexLogger/issues">Report Bug</a>
                 <a href="https://github.com/goodluck3301/FlexLogger/issues">Request Feature</a>
                 <a href="https://goodluck3301.github.io/flexlogger.html">Documentation</a>
             </div>
             <p>Made with ❤️ for the Android community</p>
             <p>⭐ Star this repository if FlexLogger helped you!</p>
-            <p>&copy; 2025 Levon M. - MIT License</p>
+            <p>© 2025 Levon M. - MIT License</p>
         </div>
     </footer>
 
@@ -946,14 +1100,14 @@ FlexLogger.init {
             // Hide all tab contents
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(content => content.classList.remove('active'));
-            
+
             // Remove active class from all tabs
             const tabs = document.querySelectorAll('.tab');
             tabs.forEach(tab => tab.classList.remove('active'));
-            
+
             // Show selected tab content
             document.getElementById(tabName + '-content').classList.add('active');
-            
+
             // Add active class to clicked tab
             event.target.classList.add('active');
         }
@@ -961,6 +1115,24 @@ FlexLogger.init {
         function toggleExpandable(header) {
             const expandable = header.parentElement;
             expandable.classList.toggle('active');
+        }
+
+        function toggleAllChangelogs() {
+            const entries = document.querySelectorAll('.changelog-entry');
+            const button = document.querySelector('.changelog-expand .btn');
+
+            entries.forEach((entry, index) => {
+                if (index >= 1) { // Show only first entry by default
+                    entry.classList.toggle('hidden');
+                }
+            });
+
+            // Update button text
+            if (button.textContent.includes('Show All')) {
+                button.textContent = 'Hide Older Versions';
+            } else {
+                button.textContent = 'Show All Versions';
+            }
         }
 
         // Smooth scrolling for navigation links
@@ -977,7 +1149,7 @@ FlexLogger.init {
             });
         });
 
-        // Add fade-in animation to sections when they come into view
+        // Add fade-in animation to sections and changelog entries when they come into view
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -992,11 +1164,20 @@ FlexLogger.init {
         }, observerOptions);
 
         document.addEventListener('DOMContentLoaded', () => {
-            const sections = document.querySelectorAll('.section');
+            const sections = document.querySelectorAll('.section, .changelog-entry');
             sections.forEach(section => {
                 observer.observe(section);
+            });
+
+            // Initialize changelog: hide older entries by default
+            const entries = document.querySelectorAll('.changelog-entry');
+            entries.forEach((entry, index) => {
+                if (index >= 1) {
+                    entry.classList.add('hidden');
+                }
             });
         });
     </script>
 </body>
+
 </html>
