@@ -999,7 +999,7 @@ FlexLogger.init {
                 <div class="code-block" data-lang="kotlin">
                     <pre>
 FlexLogger.init {
-    enabled = !BuildConfig.DEBUG // Disable in release builds
+    enabled = BuildConfig.DEBUG   // Disable in release builds
     minLevel = LogLevel.INFO      // Only log important messages
     showThreadInfo = false        // Reduce log verbosity
     
