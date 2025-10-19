@@ -673,7 +673,7 @@ dependencyResolutionManagement {
 
 // App module
 dependencies {
-    implementation("com.github.goodluck3301:FlexLogger:flexlogger-1.1")
+    implementation("com.github.goodluck3301:FlexLogger:flexlogger-1.2")
 }
 </pre>
                         </div>
@@ -693,7 +693,7 @@ dependencyResolutionManagement {
 
 // App module
 dependencies {
-    implementation 'com.github.goodluck3301:FlexLogger:flexlogger-1.1'
+    implementation 'com.github.goodluck3301:FlexLogger:flexlogger-1.2'
 }
 </pre>
                         </div>
@@ -1020,45 +1020,18 @@ FlexLogger.init {
                 <h2>📜 Changelog</h2>
                 <div class="changelog-grid">
                     <div class="changelog-entry">
-                        <h3>v1.1 <span class="changelog-date">2025</span></h3>
+                        <h3>v1.2 <span class="changelog-date">2025</span></h3>
                         <p class="changelog-description">Enhanced logging capabilities and stability improvements</p>
                         <ul class="feature-list">
                             <li><strong>Features</strong>:
                                 <ul class="feature-list">
-                                    <li>Added global uncaught exception handler to log crashes (Levon, 03.07.2025)</li>
-                                    <li>Safely trim log file using temp file to prevent data loss (Levon, 02.07.2025)
-                                    </li>
-                                    <li>Validate 'maxFileSizeMb' does not exceed allowed limit (Levon, 02.07.2025)</li>
-                                    <li>Make log file path dynamic (Levon, 28.06.2025)</li>
+                                    <li>Add AI crash analysis to provide solutions in Logcat</li>
                                 </ul>
                             </li>
                             <li><strong>Refactors</strong>:
                                 <ul class="feature-list">
-                                    <li>Deprecated old flexLog* functions in favor of log_* versions (Levon, 02.07.2025)
-                                    </li>
-                                    <li>Renamed log functions to use log_ prefix for easier use (Levon, 02.07.2025)</li>
-                                    <li>Extracted and organized utility functions into helpers folder (Levon,
-                                        01.07.2025)</li>
-                                    <li>Split log writing and trimming into separate functions for clarity and
-                                        performance (Levon, 01.07.2025)</li>
-                                </ul>
-                            </li>
-                            <li><strong>Tests</strong>:
-                                <ul class="feature-list">
-                                    <li>Added concurrent logging test for 1MB log file size overflow (Levon, 02.07.2025)
-                                    </li>
-                                    <li>Added concurrency test to verify thread-safe logging behavior (Levon,
-                                        01.07.2025)</li>
-                                    <li>Added unit tests for FlexLogger (Levon, 01.07.2025)</li>
-                                    <li>Added unit tests for FileDestination class (Levon, 30.06.2025)</li>
-                                    <li>Added file logging and log size limit tests for FlexLogger (Levon, 29.06.2025)
-                                    </li>
-                                    <li>Added basic unit tests (Levon, 28.06.2025)</li>
-                                </ul>
-                            </li>
-                            <li><strong>Chores</strong>:
-                                <ul class="feature-list">
-                                    <li>Added testing dependencies (Levon, 28.06.2025)</li>
+                                    <li>Refactor log_* functions</li>
+                                    <li>Update Java version to 17</li>
                                 </ul>
                             </li>
                         </ul>
