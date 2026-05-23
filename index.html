@@ -1,121 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Smart Note Privacy Policy</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Privacy Policy for Smart Note — a local-first productivity app for Android.">
+  <title>Privacy Policy — Smart Note</title>
   <style>
     :root {
-      --primary: #007acc;
-      --background: #f4f6f8;
-      --foreground: #fff;
-      --text: #333;
-      --heading: #111;
-      --shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      color-scheme: light dark;
+      --bg: #fafaf8;
+      --surface: #ffffff;
+      --text: #1a1a22;
+      --muted: #5c5a55;
+      --accent: #e85d4c;
+      --border: #d4d2cc;
+      --max-width: 720px;
     }
-
-    body {
-      margin: 20px;
-      font-family: 'Inter', sans-serif;
-      background-color: var(--background);
-      color: var(--text);
-    }
-
-    .container {
-      max-width: 760px;
-      margin: 60px auto; 
-      padding: 36px 32px; 
-      background-color: var(--foreground);
-      border-radius: 12px;
-      box-shadow: var(--shadow);
-    }
-
-
-    h1 {
-      font-size: 2rem;
-      color: var(--primary);
-      margin-bottom: 24px;
-    }
-
-    p {
-      font-size: 1.05rem;
-      line-height: 1.7;
-      margin-bottom: 20px;
-    }
-
-    strong {
-      display: block;
-      margin-bottom: 6px;
-      font-weight: 600;
-      color: var(--heading);
-    }
-
-    hr {
-      border: none;
-      border-top: 1px solid #e0e0e0;
-      margin: 30px 0;
-    }
-
-    @media (max-width: 600px) {
-      .container {
-        margin: 30px 16px;
-        padding: 24px 18px;
-      }
-
-      h1 {
-        font-size: 1.6rem;
-      }
-
-      p {
-        font-size: 1rem;
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #121218;
+        --surface: #1e1e26;
+        --text: #e8e6e1;
+        --muted: #c8c6c0;
+        --border: #3a3a44;
       }
     }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--text);
+    background: var(--bg);
+  }
+  header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 2rem 1.25rem 1.5rem;
+  }
+  main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 2rem 1.25rem 4rem;
+  }
+  h1 {
+    margin: 0 0 0.35rem;
+    font-size: 1.85rem;
+    font-weight: 650;
+    letter-spacing: -0.02em;
+  }
+  .meta {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin: 0;
+  }
+  h2 {
+    margin: 2rem 0 0.75rem;
+    font-size: 1.15rem;
+    font-weight: 650;
+    color: var(--text);
+  }
+  p, li { color: var(--text); }
+  p { margin: 0 0 1rem; }
+  ul { margin: 0 0 1rem; padding-left: 1.35rem; }
+  li { margin-bottom: 0.45rem; }
+  a { color: var(--accent); }
+  nav {
+    margin-top: 1rem;
+    font-size: 0.92rem;
+  }
+  nav a { margin-right: 1rem; }
+  .highlight {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.15rem;
+    margin: 1.25rem 0;
+  }
+  footer {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 1.25rem 3rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Smart Note Privacy Policy</h1>
+  <header>
+    <h1>Privacy Policy</h1>
+    <p class="meta">Smart Note · Effective date: May 23, 2026 · Last updated: May 23, 2026</p>
+    <nav>
+      <a href="terms-of-use.html">Terms of Use</a>
+      <a href="mailto:levonmyan22@gmail.com">Contact</a>
+    </nav>
+  </header>
 
-    <p>Smart Note respects and protects your privacy. This policy explains how your information is handled within our application.</p>
-
-    <hr />
-
+  <main>
     <p>
-      <strong>1. Local Data Storage</strong>
-      All notes and personal content are stored locally on your device. The app does not automatically upload or share any user data with external servers.
+      Smart Note ("we", "our", or "the app") is an Android productivity application developed by
+      <strong>GoodLuck3301</strong>. This Privacy Policy explains how information is handled when you use Smart Note.
     </p>
 
+    <div class="highlight">
+      <strong>Summary:</strong> Smart Note is designed to be local-first. Your notes, tasks, diary entries,
+      bookmarks, and most app data are stored on your device. We do not operate user accounts, do not sell your data,
+      and do not include advertising or analytics SDKs. Data is only sent over the internet when you explicitly enable
+      optional features such as AI integrations or when the app needs network access for markdown rendering or calendar
+      synchronization you choose to use.
+    </div>
+
+    <h2>1. Information We Do Not Collect</h2>
+    <p>Smart Note does not:</p>
+    <ul>
+      <li>Require you to create an account or sign in</li>
+      <li>Collect personal information automatically for marketing or profiling</li>
+      <li>Include third-party advertising or analytics trackers</li>
+      <li>Upload your notes, tasks, diary entries, or bookmarks to our servers</li>
+    </ul>
+
+    <h2>2. Data Stored Locally on Your Device</h2>
     <p>
-      <strong>2. No Advertising or Analytics</strong>
-      Smart Note does not include any advertising, analytics, or third-party tracking tools. Your data is never used for profiling or advertising purposes.
+      The following data is stored locally on your device using on-device storage technologies
+      (including Room database and DataStore preferences):
+    </p>
+    <ul>
+      <li><strong>Notes</strong> — titles, content (including Markdown), folders, and pin status</li>
+      <li><strong>Tasks</strong> — titles, descriptions, priorities, sub-tasks, due dates, and completion status</li>
+      <li><strong>Diary entries</strong> — titles, content, mood selections, and timestamps</li>
+      <li><strong>Bookmarks</strong> — titles and URLs you save</li>
+      <li><strong>Calendar data</strong> — events read from or written to your device calendar when you grant permission</li>
+      <li><strong>App settings</strong> — theme, font, startup screen, sort order, and other preferences</li>
+      <li><strong>Reminders</strong> — alarm schedules for task due dates</li>
+      <li><strong>AI configuration</strong> — your chosen provider, API keys, model names, and custom API URLs (stored locally in preferences)</li>
+    </ul>
+    <p>
+      Android backup is disabled for the app (<code>allowBackup="false"</code>). You may manually export your data
+      through the in-app Import/Export feature, optionally with password-based encryption.
     </p>
 
+    <h2>3. Optional AI Assistant</h2>
     <p>
-      <strong>3. Optional AI Summarization Feature</strong>
-      If you choose to use the AI assistant, your selected text is securely sent to a third-party AI provider (such as OpenAI or Google Gemini) solely for the purpose of generating a summary. This feature is fully optional and only activated when you request it.
+      If you enable the AI assistant in Settings and configure a provider (such as OpenAI or Google Gemini),
+      messages you send — including any notes, tasks, or calendar events you attach — are transmitted directly from
+      your device to the third-party AI provider you selected, using the API key and endpoint you provide.
+    </p>
+    <ul>
+      <li>AI features are entirely optional and disabled by default until you configure them</li>
+      <li>We do not receive, store, or process your AI conversations on our own servers</li>
+      <li>Your API keys are stored locally on your device and are not transmitted to us</li>
+      <li>Data handling by AI providers is governed by their respective privacy policies</li>
+    </ul>
+    <p>We recommend reviewing the privacy policies of any AI provider you choose:</p>
+    <ul>
+      <li><a href="https://openai.com/policies/privacy-policy" rel="noopener noreferrer" target="_blank">OpenAI Privacy Policy</a></li>
+      <li><a href="https://policies.google.com/privacy" rel="noopener noreferrer" target="_blank">Google Privacy Policy</a></li>
+    </ul>
+
+    <h2>4. Device Permissions</h2>
+    <p>Smart Note may request the following Android permissions to provide specific features:</p>
+    <ul>
+      <li><strong>Internet</strong> — optional AI integrations, Markdown content that references remote resources, and network-based features you enable</li>
+      <li><strong>Read/Write Calendar</strong> — display and manage calendar events within the app and on home screen widgets</li>
+      <li><strong>Notifications</strong> — deliver task reminder alerts</li>
+      <li><strong>Schedule exact alarms</strong> — trigger reminders at precise due times</li>
+      <li><strong>Receive boot completed</strong> — restore scheduled reminders after device restart</li>
+      <li><strong>Biometric / device credentials</strong> — optional app lock using your device's built-in authentication (processed entirely on-device; we do not receive biometric data)</li>
+    </ul>
+    <p>You can revoke permissions at any time through your device settings. Some features may not work without the relevant permission.</p>
+
+    <h2>5. Share Intents and Widgets</h2>
+    <p>
+      Smart Note can receive text shared from other apps to create notes, tasks, or bookmarks. This content is saved
+      locally on your device. Home screen widgets display tasks and calendar information from your local data and
+      device calendar; widget data is not sent to external servers by Smart Note.
     </p>
 
+    <h2>6. Import and Export</h2>
     <p>
-      <strong>4. Use of Third-Party APIs</strong>
-      The app may use APIs provided by external services (e.g., OpenAI, Google). We recommend reviewing their privacy policies to understand how they process data.
+      When you use the Import/Export feature, data is read from or written to files and folders you select on your
+      device. You control where exported files are stored. Optional encryption uses a password you provide; we do not
+      have access to that password or your exported files.
     </p>
 
+    <h2>7. Screenshot Blocking</h2>
     <p>
-      <strong>5. Your Control</strong>
-      You can use all Smart Note features without ever using the AI assistant. No data is collected or sent externally unless you explicitly opt in.
+      If you enable "Block screenshots" in Settings, the app uses Android's secure window flag to discourage
+      screenshots and screen recording while the app is open. This setting is processed on your device only.
     </p>
 
+    <h2>8. Children's Privacy</h2>
     <p>
-      <strong>6. Data Collection</strong>
-      We do not collect or store personal data. No user-identifiable information is transmitted from your device unless you explicitly choose to do so.
+      Smart Note is not directed at children under 13. We do not knowingly collect personal information from children.
+      If you believe a child has provided personal information through optional third-party AI features, please contact
+      the relevant AI provider or us using the contact information below.
     </p>
 
-    <hr />
-
+    <h2>9. Data Retention and Deletion</h2>
     <p>
-      By using Smart Note, you are assured that your privacy is respected and your data remains under your control.
+      Your data remains on your device until you delete it within the app, clear app data through Android settings,
+      or uninstall Smart Note. Uninstalling the app removes locally stored app data from your device.
     </p>
-  </div>
+
+    <h2>10. Security</h2>
+    <p>
+      We take reasonable measures to design Smart Note with privacy in mind, including local storage, disabled cloud
+      backup, and optional app lock. However, no method of electronic storage is 100% secure. You are responsible for
+      securing your device and any API keys you enter for AI integrations.
+    </p>
+
+    <h2>11. Changes to This Policy</h2>
+    <p>
+      We may update this Privacy Policy from time to time. When we do, we will revise the "Last updated" date at the
+      top of this page. Continued use of Smart Note after changes become effective constitutes acceptance of the
+      updated policy.
+    </p>
+
+    <h2>12. Contact Us</h2>
+    <p>
+      If you have questions about this Privacy Policy or Smart Note's privacy practices, contact us at:
+    </p>
+    <p>
+      <strong>Email:</strong> <a href="mailto:levonmyan22@gmail.com">levonmyan22@gmail.com</a><br>
+      <strong>App:</strong> Smart Note (com.goodluck3301.smartnote)
+    </p>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 GoodLuck3301. Smart Note is provided as-is. See also our <a href="terms-of-use.html">Terms of Use</a>.</p>
+  </footer>
 </body>
 </html>
