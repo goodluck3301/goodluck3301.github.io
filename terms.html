@@ -5,7 +5,576 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Terms of Use — Trailmark</title>
 <meta name="description" content="Terms of Use for Trailmark, an Android GPS tracker for hikes and journeys.">
-<link rel="stylesheet" href="https://goodluck3301.github.io/styles.css">
+<style>
+:root {
+  --bg: #f6f8f7;
+  --surface: #ffffff;
+  --surface-alt: #eef3f0;
+  --text: #14201b;
+  --muted: #5c6d65;
+  --border: #dfe7e2;
+  --accent: #0f6f57;
+  --accent-text: #0b5745;
+  --accent-soft: #e4f2ec;
+  --warn-bg: #fdf6e3;
+  --warn-border: #e8d9a8;
+  --warn-text: #6b5312;
+  --radius: 14px;
+  --maxw: 1120px;
+  --font-sans: "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0c1210;
+    --surface: #131b18;
+    --surface-alt: #18221e;
+    --text: #e7ede9;
+    --muted: #93a49b;
+    --border: #24302b;
+    --accent: #4fd1a5;
+    --accent-text: #6fdcb6;
+    --accent-soft: #12241e;
+    --warn-bg: #241f10;
+    --warn-border: #4a3f1c;
+    --warn-text: #e0cd94;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--accent-text);
+  text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  text-decoration-color: var(--accent);
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.site-header .inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 650;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.brand svg {
+  width: 26px;
+  height: 26px;
+  color: var(--accent);
+  flex: none;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.site-nav a {
+  padding: 7px 13px;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.site-nav a:hover {
+  background: var(--surface-alt);
+  color: var(--text);
+}
+
+.site-nav a[aria-current="page"] {
+  background: var(--accent-soft);
+  color: var(--accent-text);
+}
+
+/* ---------- Layout ---------- */
+
+.wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.page-head {
+  padding: 64px 0 36px;
+  border-bottom: 1px solid var(--border);
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  font-size: 0.78rem;
+  font-weight: 650;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+}
+
+.page-head h1 {
+  margin: 0;
+  font-size: clamp(2.1rem, 5vw, 3rem);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+.page-head .lede {
+  margin: 18px 0 0;
+  max-width: 62ch;
+  font-size: 1.1rem;
+  color: var(--muted);
+}
+
+.dates {
+  margin: 24px 0 0;
+  display: flex;
+  gap: 10px 28px;
+  flex-wrap: wrap;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.dates b {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 246px minmax(0, 1fr);
+  gap: 56px;
+  align-items: start;
+  padding: 44px 0 88px;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+    padding-top: 28px;
+  }
+}
+
+/* ---------- Table of contents ---------- */
+
+.toc {
+  position: sticky;
+  top: 84px;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 900px) {
+  .toc {
+    position: static;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+  }
+}
+
+.toc h2 {
+  margin: 0 0 12px;
+  font-size: 0.74rem;
+  font-weight: 650;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.toc ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: toc;
+  border-left: 1px solid var(--border);
+}
+
+.toc li {
+  counter-increment: toc;
+}
+
+.toc a {
+  display: block;
+  padding: 5px 0 5px 14px;
+  margin-left: -1px;
+  border-left: 2px solid transparent;
+  color: var(--muted);
+  text-decoration: none;
+  line-height: 1.45;
+}
+
+.toc a::before {
+  content: counter(toc) ".";
+  margin-right: 7px;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.6;
+}
+
+.toc a:hover {
+  color: var(--text);
+  border-left-color: var(--accent);
+}
+
+/* ---------- Prose ---------- */
+
+.prose {
+  max-width: 74ch;
+}
+
+.prose section {
+  scroll-margin-top: 92px;
+}
+
+.prose section + section {
+  margin-top: 48px;
+}
+
+.prose h2 {
+  margin: 0 0 14px;
+  font-size: 1.42rem;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  font-weight: 680;
+  scroll-margin-top: 92px;
+}
+
+.prose h3 {
+  margin: 30px 0 10px;
+  font-size: 1.05rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  scroll-margin-top: 92px;
+}
+
+.prose p {
+  margin: 0 0 16px;
+}
+
+.prose ul,
+.prose ol {
+  margin: 0 0 16px;
+  padding-left: 22px;
+}
+
+.prose li {
+  margin-bottom: 9px;
+}
+
+.prose li::marker {
+  color: var(--accent);
+}
+
+.prose strong {
+  font-weight: 640;
+}
+
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1px 5px;
+}
+
+.prose hr {
+  margin: 48px 0;
+  border: 0;
+  border-top: 1px solid var(--border);
+}
+
+/* ---------- Callouts ---------- */
+
+.callout {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin: 0 0 32px;
+}
+
+.callout :last-child {
+  margin-bottom: 0;
+}
+
+.callout h2,
+.callout h3 {
+  margin-top: 0;
+}
+
+.callout .callout-lead {
+  margin-bottom: 12px;
+}
+
+.callout.warning {
+  background: var(--warn-bg);
+  border-color: var(--warn-border);
+  border-left-color: #c9a227;
+  color: var(--warn-text);
+}
+
+.callout.warning strong {
+  color: inherit;
+}
+
+/* ---------- Tables ---------- */
+
+.table-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin: 0 0 24px;
+  background: var(--surface);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.94rem;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+thead th {
+  background: var(--surface-alt);
+  font-weight: 620;
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+td code {
+  white-space: nowrap;
+}
+
+/* ---------- Placeholder markers ---------- */
+
+.fill-me {
+  background: var(--warn-bg);
+  border: 1px dashed var(--warn-border);
+  color: var(--warn-text);
+  border-radius: 5px;
+  padding: 0 6px;
+  font-family: var(--font-mono);
+  font-size: 0.84em;
+  font-style: normal;
+}
+
+/* ---------- Home page ---------- */
+
+.hero {
+  padding: 88px 0 72px;
+  text-align: center;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.4rem, 6.5vw, 3.9rem);
+  line-height: 1.06;
+  letter-spacing: -0.035em;
+  font-weight: 700;
+}
+
+.hero p {
+  margin: 22px auto 0;
+  max-width: 56ch;
+  font-size: 1.16rem;
+  color: var(--muted);
+}
+
+.hero-mark {
+  width: 62px;
+  height: 62px;
+  color: var(--accent);
+  margin-bottom: 22px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding-bottom: 72px;
+}
+
+.card {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.card h2 {
+  margin: 0 0 8px;
+  font-size: 1.2rem;
+  font-weight: 650;
+  letter-spacing: -0.015em;
+}
+
+.card p {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 0.96rem;
+}
+
+.card .go {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent-text);
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 0 0 80px;
+}
+
+.fact {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+}
+
+.fact b {
+  display: block;
+  font-size: 0.98rem;
+  font-weight: 650;
+  margin-bottom: 6px;
+}
+
+.fact span {
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 32px 0 56px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.site-footer .inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.site-footer nav {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.site-footer a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: var(--text);
+  text-decoration: underline;
+}
+
+@media print {
+  .site-header,
+  .toc,
+  .site-footer {
+    display: none;
+  }
+
+  .layout {
+    display: block;
+    padding: 0;
+  }
+
+  body {
+    font-size: 11pt;
+  }
+}
+</style>
 <script>
   // Set your developer or company name here. It fills every mention on this page.
   const DEVELOPER_NAME = "Levon Momchyan";
@@ -21,7 +590,7 @@
 
 <header class="site-header">
   <div class="inner">
-    <a class="brand" href="index.html">
+    <a class="brand" href="trailmark.html">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M4 20c2.5-1.2 3.6-3.2 2.6-5C5.5 13 3.4 12.4 3.7 10.5 4 8.6 6.6 8 9.5 8.6c2.9.6 5.2 0 5.6-1.7"/>
         <circle cx="17.5" cy="5.5" r="2.5"/>
@@ -30,7 +599,7 @@
       Trailmark
     </a>
     <nav class="site-nav">
-      <a href="index.html">Home</a>
+      <a href="trailmark.html">Home</a>
       <a href="privacy.html">Privacy Policy</a>
       <a href="terms.html" aria-current="page">Terms of Use</a>
     </nav>
@@ -127,7 +696,7 @@
           <h2>4. Safety and navigation</h2>
 
           <div class="callout warning">
-            <p style="margin-bottom:12px"><strong>Read this section even if you skip the rest.</strong></p>
+            <p class="callout-lead"><strong>Read this section even if you skip the rest.</strong></p>
             <p>
               Trailmark is a recording and reference tool. It is <strong>not</strong> a safety
               device, a survival tool, an emergency beacon, or a certified navigation system, and it
@@ -198,7 +767,7 @@
             it anywhere.
           </p>
           <div class="callout">
-            <p style="margin:0">
+            <p>
               <strong>Backups are your responsibility.</strong> Data lives only on your device unless
               you export it or back it up yourself. Uninstalling the app, clearing its storage,
               losing or damaging the device, or a defect in the app can all result in permanent loss.
@@ -368,7 +937,7 @@
           <h2>18. Contact</h2>
           <p>
             Questions about these Terms can go to
-            <span class="fill-me">levonmyan22@gmail.com</span>.
+            <a href="mailto:levonmyan22@gmail.com">levonmyan22@gmail.com</a>.
           </p>
           <p>
             Developer: <span data-developer></span>
@@ -384,7 +953,7 @@
   <div class="inner">
     <span>&copy; 2026 <span data-developer></span></span>
     <nav>
-      <a href="index.html">Home</a>
+      <a href="trailmark.html">Home</a>
       <a href="privacy.html">Privacy Policy</a>
       <a href="terms.html">Terms of Use</a>
     </nav>
