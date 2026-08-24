@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — Trailmark</title>
+<meta name="description" content="Privacy Policy for Trailmark, an Android GPS tracker for hikes and journeys. Your tracks stay on your device.">
+<link rel="stylesheet" href="styles.css">
+<script>
+  // Set your developer or company name here. It fills every mention on this page.
+  const DEVELOPER_NAME = "Levon Momchyan";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("[data-developer]").forEach((el) => {
+      el.textContent = DEVELOPER_NAME;
+    });
+  });
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="inner">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M4 20c2.5-1.2 3.6-3.2 2.6-5C5.5 13 3.4 12.4 3.7 10.5 4 8.6 6.6 8 9.5 8.6c2.9.6 5.2 0 5.6-1.7"/>
+        <circle cx="17.5" cy="5.5" r="2.5"/>
+        <circle cx="6.5" cy="19.5" r="1.6"/>
+      </svg>
+      Trailmark
+    </a>
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="privacy.html" aria-current="page">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="page-head">
+      <p class="eyebrow">Legal</p>
+      <h1>Privacy Policy</h1>
+      <p class="lede">
+        Trailmark records where you have been. That is about as sensitive as data gets, so this
+        policy explains exactly what the app stores, where it stores it, and the few cases in
+        which anything leaves your phone.
+      </p>
+      <p class="dates">
+        <span>Effective <b>24 August 2026</b></span>
+        <span>Last updated <b>24 August 2026</b></span>
+        <span>Applies to <b>com.goodluck3301.gpstracking</b></span>
+      </p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="layout">
+
+      <aside class="toc">
+        <h2>Contents</h2>
+        <ol>
+          <li><a href="#summary">The short version</a></li>
+          <li><a href="#who">Who this policy covers</a></li>
+          <li><a href="#collect">What the app records</a></li>
+          <li><a href="#not-collect">What the app never collects</a></li>
+          <li><a href="#permissions">Permissions and why</a></li>
+          <li><a href="#storage">Where your data lives</a></li>
+          <li><a href="#backup">Android system backup</a></li>
+          <li><a href="#third-parties">Third-party services</a></li>
+          <li><a href="#sharing">Sharing and export</a></li>
+          <li><a href="#retention">Retention and deletion</a></li>
+          <li><a href="#security">Security</a></li>
+          <li><a href="#rights">Your rights</a></li>
+          <li><a href="#children">Children</a></li>
+          <li><a href="#changes">Changes to this policy</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ol>
+      </aside>
+
+      <article class="prose">
+
+        <section id="summary">
+          <div class="callout">
+            <h2 style="font-size:1.15rem">The short version</h2>
+            <ul>
+              <li><strong>Trailmark has no servers.</strong> There is no Trailmark account, no
+                Trailmark backend, and nowhere for us to store your tracks even if we wanted to.</li>
+              <li><strong>Your routes stay on your device</strong> in private app storage until you
+                explicitly export, share, or back them up.</li>
+              <li><strong>Location is recorded only while you are recording.</strong> Nothing is
+                captured before you press start or after you press stop.</li>
+              <li><strong>No analytics, no advertising, no tracking SDKs, no crash reporting
+                services, no purchases.</strong></li>
+              <li><strong>We never sell or rent your data</strong>, because we never receive it.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="who">
+          <h2>1. Who this policy covers</h2>
+          <p>
+            This policy describes how the Trailmark Android application
+            (<code>com.goodluck3301.gpstracking</code>, "Trailmark", "the app") handles information.
+            It is published by <span data-developer></span>
+            ("we", "us"), the developer of the app.
+          </p>
+          <p>
+            Because Trailmark operates entirely on your device, we act as a data controller only in
+            the narrow sense of having designed how the app stores information locally. In everyday
+            use, no personal data is transmitted to us at all.
+          </p>
+        </section>
+
+        <section id="collect">
+          <h2>2. What the app records</h2>
+          <p>
+            All of the following is created by you, stored on your device, and never automatically
+            transmitted anywhere.
+          </p>
+
+          <h3>Location data</h3>
+          <p>
+            When you start a recording, the app receives position fixes from Android's fused
+            location provider. Each recorded point may contain latitude, longitude, timestamp, and —
+            depending on your settings and what your hardware reports — altitude, horizontal and
+            vertical accuracy, speed, bearing, and satellite count.
+          </p>
+          <p>
+            Recording continues while the app is in the background, the screen is off, or the device
+            is locked, using an Android foreground service with a persistent notification, so a
+            track does not need you watching the screen to stay complete. Recording stops when you
+            stop it.
+          </p>
+
+          <h3>Photos you attach</h3>
+          <p>
+            You may attach photos to waypoints using the Android document picker. When you do, the
+            app reads the image's EXIF metadata — including embedded GPS coordinates, altitude, and
+            capture time — so it can place the photo on your track. A copy of the image is written
+            into the app's own private storage so the route survives you clearing your camera roll.
+            The app does not browse, index, or upload your gallery.
+          </p>
+
+          <h3>Route content you write</h3>
+          <p>
+            Route names, descriptions, waypoint names, categories, notes, tags, folders, and
+            tracking templates. Whatever you type is stored as you typed it.
+          </p>
+
+          <h3>App settings</h3>
+          <p>
+            Theme, units, map preferences, tracking configuration, navigation and photo settings,
+            file naming rules, and whether you have completed onboarding.
+          </p>
+
+          <h3>Google account email — only if you connect Google Drive</h3>
+          <p>
+            Google Drive backup is optional and off until you turn it on. If you connect it, the app
+            receives the email address of the Google account you chose, purely so it can show you
+            which account is connected. Access tokens are held in memory for the duration of the
+            operation and are not written to storage. See
+            <a href="#third-parties">Third-party services</a> for what the app can and cannot see in
+            your Drive.
+          </p>
+        </section>
+
+        <section id="not-collect">
+          <h2>3. What the app never collects</h2>
+          <p>To be explicit, Trailmark contains no code that does any of the following:</p>
+          <ul>
+            <li>No analytics or usage telemetry of any kind.</li>
+            <li>No advertising, ad networks, or advertising identifiers.</li>
+            <li>No third-party crash or performance reporting service.</li>
+            <li>No Trailmark user account, login, email address collection, or password.</li>
+            <li>No access to your contacts, microphone, SMS, call logs, calendar, or browsing history.</li>
+            <li>No device fingerprinting, and no profiling or automated decision-making.</li>
+            <li>No sale, rental, or licensing of personal information to anyone.</li>
+          </ul>
+        </section>
+
+        <section id="permissions">
+          <h2>4. Permissions and why</h2>
+          <p>
+            Android will ask you to approve the sensitive ones. You can decline or later revoke any
+            of them in <strong>Settings &rarr; Apps &rarr; Trailmark &rarr; Permissions</strong>;
+            the affected feature stops working, but the app does not.
+          </p>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr><th>Permission</th><th>Why the app asks</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>ACCESS_FINE_LOCATION</code><br><code>ACCESS_COARSE_LOCATION</code></td>
+                  <td>Reading GPS position while recording a route and while navigating one. Without this the app cannot function.</td>
+                </tr>
+                <tr>
+                  <td><code>ACCESS_BACKGROUND_LOCATION</code></td>
+                  <td>Continuing to record with the screen off or the app backgrounded. Requested separately, after foreground location, and only when you choose to allow it.</td>
+                </tr>
+                <tr>
+                  <td><code>FOREGROUND_SERVICE</code><br><code>FOREGROUND_SERVICE_LOCATION</code></td>
+                  <td>Running the recording service that Android requires for continuous location work.</td>
+                </tr>
+                <tr>
+                  <td><code>POST_NOTIFICATIONS</code></td>
+                  <td>Showing the ongoing recording notification and navigation updates.</td>
+                </tr>
+                <tr>
+                  <td><code>WAKE_LOCK</code></td>
+                  <td>Keeping the recording alive through long sessions so the device does not sleep through your hike.</td>
+                </tr>
+                <tr>
+                  <td><code>REQUEST_IGNORE_BATTERY_OPTIMIZATIONS</code></td>
+                  <td>Optionally asking Android to stop killing the recording service. Entirely your choice to grant.</td>
+                </tr>
+                <tr>
+                  <td><code>INTERNET</code><br><code>ACCESS_NETWORK_STATE</code></td>
+                  <td>Loading Google Maps tiles and, if you connect it, talking to Google Drive. Recording, statistics, editing, and navigation all work offline.</td>
+                </tr>
+                <tr>
+                  <td><code>CAMERA</code></td>
+                  <td>Declared for photo capture support. Photos are currently attached through the system document picker rather than in-app capture, so in practice the app does not open your camera.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="storage">
+          <h2>5. Where your data lives</h2>
+          <p>
+            Everything sits in Trailmark's private application sandbox, which other apps on your
+            device cannot read:
+          </p>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr><th>Store</th><th>Contents</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Local SQLite database (<code>gps_tracking.db</code>)</td>
+                  <td>Routes, GPS points in packed binary chunks, waypoints, photo metadata, folders, templates, tags, and crash-recovery state.</td>
+                </tr>
+                <tr>
+                  <td>Private app files</td>
+                  <td>Copies of photos you attached, organised per route.</td>
+                </tr>
+                <tr>
+                  <td>Preferences file</td>
+                  <td>Your app settings.</td>
+                </tr>
+                <tr>
+                  <td>Cache</td>
+                  <td>Image thumbnails, and temporary export packages while a share is in progress.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            No hosted database, no cloud mirror, no sync-by-default. If your phone is lost and you
+            never exported or backed up a route, that route is gone — which is the honest trade-off
+            of a local-first design.
+          </p>
+        </section>
+
+        <section id="backup">
+          <h2>6. Android system backup</h2>
+          <p>
+            Trailmark currently allows Android's built-in backup. If backup is enabled in your
+            device settings, Android may copy app data — which can include your recorded routes and
+            attached photos — to your own Google account's backup storage. This is a platform
+            feature operated by Google under your Google account, not a Trailmark service, and we
+            have no access to it.
+          </p>
+          <p>
+            You can turn it off system-wide in <strong>Settings &rarr; Google &rarr; Backup</strong>,
+            or per app where your device offers that control.
+          </p>
+        </section>
+
+        <section id="third-parties">
+          <h2>7. Third-party services</h2>
+          <p>
+            The app is built on a small number of Google components. When these are used, your data
+            is handled under Google's own
+            <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a>.
+          </p>
+
+          <h3>Google Play services — location</h3>
+          <p>
+            Supplies the position fixes the app records. Google may process device signals such as
+            nearby Wi-Fi and cell towers to produce a fix, according to your device-level Google
+            Location Accuracy and Location History settings, which you control in Android settings.
+          </p>
+
+          <h3>Google Maps</h3>
+          <p>
+            Used to draw maps. Displaying a map requires contacting Google's servers, which
+            necessarily reveals to Google the map area being viewed and standard request data such
+            as your IP address. Use of Maps is additionally governed by the
+            <a href="https://www.google.com/help/terms_maps/" target="_blank" rel="noopener">Google Maps/Google Earth Additional Terms of Service</a>.
+          </p>
+
+          <h3>Google Drive — optional</h3>
+          <p>
+            If, and only if, you connect it, the app can upload and download Trailmark route files.
+            Authorisation uses the restricted <code>drive.file</code> scope, which means the app can
+            only see and modify files it created itself. Your existing documents, photos, and folders
+            in Drive are not visible to the app and are never read or modified.
+          </p>
+
+          <h3>Google Maps navigation hand-off</h3>
+          <p>
+            If you choose to navigate with the Google Maps app, Trailmark passes the destination
+            coordinates to it via an Android intent. From that point the Google Maps app governs the
+            experience and the data.
+          </p>
+
+          <h3>Other apps you share to</h3>
+          <p>
+            When you use the share sheet, the destination app receives the file you sent and applies
+            its own privacy policy to it. Trailmark has no visibility into or control over what
+            happens after that.
+          </p>
+        </section>
+
+        <section id="sharing">
+          <h2>8. Sharing and export</h2>
+          <p>
+            Data leaves your device only through actions you take deliberately:
+          </p>
+          <ul>
+            <li><strong>Exporting or sharing a route</strong> as <code>.gptrack</code>, GPX, KML, or
+              GeoJSON. A route file contains the full coordinate trace, timestamps, your notes, and —
+              for <code>.gptrack</code> — the attached photos. Treat it as sensitive; anyone holding
+              it can reconstruct where you were and when.</li>
+            <li><strong>Uploading a backup to your own Google Drive.</strong></li>
+            <li><strong>Handing a destination to another navigation app.</strong></li>
+          </ul>
+          <p>We disclose your information to no one else, for any reason, other than where we are legally compelled to — which, having no data, we cannot meaningfully do anyway.</p>
+        </section>
+
+        <section id="retention">
+          <h2>9. Retention and deletion</h2>
+          <p>
+            Data is kept until you delete it. There is no expiry and no server-side copy waiting to
+            be purged.
+          </p>
+          <ul>
+            <li><strong>Delete one route:</strong> remove it in the app. Its points, waypoints, and
+              photo copies are deleted with it.</li>
+            <li><strong>Delete everything:</strong> uninstall Trailmark, or use
+              <strong>Settings &rarr; Apps &rarr; Trailmark &rarr; Storage &rarr; Clear storage</strong>.
+              This is irreversible.</li>
+            <li><strong>Delete cloud backups:</strong> remove the uploaded files from within the app's
+              Drive screen, or directly in Google Drive.</li>
+            <li><strong>Disconnect Google Drive:</strong> disconnect in the app, and revoke the app's
+              access at
+              <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>.</li>
+            <li><strong>Files you already shared</strong> cannot be recalled by us. You will need to
+              delete them wherever you sent them.</li>
+          </ul>
+        </section>
+
+        <section id="security">
+          <h2>10. Security</h2>
+          <p>
+            Your routes live in Android's private per-app storage, which is protected by the
+            operating system's sandbox and by your device's full-disk encryption. Network calls to
+            Google use HTTPS. Route files arriving from outside — a share sheet, an email, a Drive
+            folder — are parsed defensively, with archive path traversal rejected and uncompressed
+            size capped.
+          </p>
+          <p>
+            The practical limits are worth stating plainly: data in the app is only as protected as
+            the device itself. A phone with no screen lock, or one that has been rooted or
+            compromised, offers your route history to whoever holds it. Exported files carry no
+            encryption of their own.
+          </p>
+        </section>
+
+        <section id="rights">
+          <h2>11. Your rights</h2>
+          <p>
+            Depending on where you live, data protection law — such as the GDPR in the European
+            Economic Area and the UK, or the CCPA/CPRA in California — grants you rights to access,
+            correct, delete, restrict, object to, and port your personal data.
+          </p>
+          <p>
+            With Trailmark these rights are satisfied directly, without a request process, because
+            you already hold the only copy: the app itself is your access mechanism, its editors are
+            your correction mechanism, its export is your portability mechanism, and deletion or
+            uninstall is your erasure mechanism. Where a legal basis is relevant, processing on your
+            device happens on the basis of your consent, expressed through the permissions you grant
+            and each recording you choose to start; you may withdraw it at any time by revoking
+            permissions or removing the app.
+          </p>
+          <p>
+            We hold no personal data about you, so there is nothing for us to look up, export, or
+            erase on your behalf, and no personal information for us to sell or share for
+            cross-context behavioural advertising. If you believe your rights have not been
+            respected you may complain to your local supervisory authority.
+          </p>
+        </section>
+
+        <section id="children">
+          <h2>12. Children</h2>
+          <p>
+            Trailmark is not directed to children under 13 (or the minimum age of digital consent in
+            your country, where that is higher), and we do not knowingly collect information from
+            them. As the app transmits nothing to us, a parent or guardian who wants a child's data
+            removed can do so by deleting the routes or uninstalling the app.
+          </p>
+        </section>
+
+        <section id="changes">
+          <h2>13. Changes to this policy</h2>
+          <p>
+            If the app's data practices change — a new integration, a new permission, an actual
+            server — this policy will be updated before or alongside that release, and the "last
+            updated" date at the top will change. Material changes will be signalled in the app or
+            in the store listing's release notes. Continuing to use Trailmark after an update means
+            you accept the revised policy.
+          </p>
+        </section>
+
+        <section id="contact">
+          <h2>14. Contact</h2>
+          <p>
+            Questions about this policy, or about privacy in the app, can go to
+            <span class="fill-me">levonmyan22@gmail.com</span>.
+          </p>
+          <p>
+            Developer: <span data-developer></span>
+          </p>
+        </section>
+
+      </article>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="inner">
+    <span>&copy; 2026 <span data-developer></span></span>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
