@@ -5,10 +5,291 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Trailmark — Legal</title>
 <meta name="description" content="Privacy Policy and Terms of Use for Trailmark, an Android GPS tracker for hikes and journeys.">
-<link rel="stylesheet" href="styles.css">
+<style>
+:root {
+  --bg: #f6f8f7;
+  --surface: #ffffff;
+  --surface-alt: #eef3f0;
+  --text: #14201b;
+  --muted: #5c6d65;
+  --border: #dfe7e2;
+  --accent: #0f6f57;
+  --accent-text: #0b5745;
+  --accent-soft: #e4f2ec;
+  --radius: 14px;
+  --maxw: 1120px;
+  --font-sans: "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0c1210;
+    --surface: #131b18;
+    --surface-alt: #18221e;
+    --text: #e7ede9;
+    --muted: #93a49b;
+    --border: #24302b;
+    --accent: #4fd1a5;
+    --accent-text: #6fdcb6;
+    --accent-soft: #12241e;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--accent-text);
+  text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  text-decoration-color: var(--accent);
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.site-header .inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 650;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.brand svg {
+  width: 26px;
+  height: 26px;
+  color: var(--accent);
+  flex: none;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.site-nav a {
+  padding: 7px 13px;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.site-nav a:hover {
+  background: var(--surface-alt);
+  color: var(--text);
+}
+
+.site-nav a[aria-current="page"] {
+  background: var(--accent-soft);
+  color: var(--accent-text);
+}
+
+/* ---------- Layout ---------- */
+
+.wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  padding: 88px 0 72px;
+  text-align: center;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.4rem, 6.5vw, 3.9rem);
+  line-height: 1.06;
+  letter-spacing: -0.035em;
+  font-weight: 700;
+}
+
+.hero p {
+  margin: 22px auto 0;
+  max-width: 56ch;
+  font-size: 1.16rem;
+  color: var(--muted);
+}
+
+.hero-mark {
+  width: 62px;
+  height: 62px;
+  color: var(--accent);
+  margin-bottom: 22px;
+}
+
+/* ---------- Cards ---------- */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding-bottom: 72px;
+}
+
+.card {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.card h2 {
+  margin: 0 0 8px;
+  font-size: 1.2rem;
+  font-weight: 650;
+  letter-spacing: -0.015em;
+}
+
+.card p {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 0.96rem;
+}
+
+.card .go {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent-text);
+}
+
+/* ---------- Facts ---------- */
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 0 0 80px;
+}
+
+.fact {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+}
+
+.fact b {
+  display: block;
+  font-size: 0.98rem;
+  font-weight: 650;
+  margin-bottom: 6px;
+}
+
+.fact span {
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 32px 0 56px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.site-footer .inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.site-footer nav {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.site-footer a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: var(--text);
+  text-decoration: underline;
+}
+
+@media print {
+  .site-header,
+  .site-footer {
+    display: none;
+  }
+
+  body {
+    font-size: 11pt;
+  }
+}
+</style>
 <script>
   // Set your developer or company name here. It fills every mention on this page.
-  const DEVELOPER_NAME = "Levon MOmchyan";
+  const DEVELOPER_NAME = "Levon Momchyan";
 
   document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll("[data-developer]").forEach((el) => {
@@ -21,7 +302,7 @@
 
 <header class="site-header">
   <div class="inner">
-    <a class="brand" href="index.html">
+    <a class="brand" href="trailmark.html">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M4 20c2.5-1.2 3.6-3.2 2.6-5C5.5 13 3.4 12.4 3.7 10.5 4 8.6 6.6 8 9.5 8.6c2.9.6 5.2 0 5.6-1.7"/>
         <circle cx="17.5" cy="5.5" r="2.5"/>
@@ -30,7 +311,7 @@
       Trailmark
     </a>
     <nav class="site-nav">
-      <a href="index.html" aria-current="page">Home</a>
+      <a href="trailmark.html" aria-current="page">Home</a>
       <a href="privacy.html">Privacy Policy</a>
       <a href="terms.html">Terms of Use</a>
     </nav>
@@ -99,7 +380,7 @@
   <div class="inner">
     <span>&copy; 2026 <span data-developer></span></span>
     <nav>
-      <a href="index.html">Home</a>
+      <a href="trailmark.html">Home</a>
       <a href="privacy.html">Privacy Policy</a>
       <a href="terms.html">Terms of Use</a>
     </nav>
