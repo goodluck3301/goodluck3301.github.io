@@ -634,6 +634,7 @@ td code {
           <li><a href="#who">Who this policy covers</a></li>
           <li><a href="#collect">What the app records</a></li>
           <li><a href="#not-collect">What the app never collects</a></li>
+          <li><a href="#diagnostics">Usage and crash diagnostics</a></li>
           <li><a href="#permissions">Permissions and why</a></li>
           <li><a href="#storage">Where your data lives</a></li>
           <li><a href="#backup">Android system backup</a></li>
@@ -660,8 +661,11 @@ td code {
                 explicitly export, share, or back them up.</li>
               <li><strong>Location is recorded only while you are recording.</strong> Nothing is
                 captured before you press start or after you press stop.</li>
-              <li><strong>No analytics, no advertising, no tracking SDKs, no crash reporting
-                services, no purchases.</strong></li>
+              <li><strong>No advertising, no ad identifiers, no purchases.</strong></li>
+              <li><strong>Anonymous usage and crash diagnostics are on, and you can turn them
+                off.</strong> They tell us which features get used and which crashes to fix. They
+                never contain your coordinates, route or place names, notes, or photos. Both
+                switches are in <em>Settings &rarr; Privacy</em>.</li>
               <li><strong>We never sell or rent your data</strong>, because we never receive it.</li>
             </ul>
           </div>
@@ -685,8 +689,11 @@ td code {
         <section id="collect">
           <h2>2. What the app records</h2>
           <p>
-            All of the following is created by you, stored on your device, and never automatically
-            transmitted anywhere.
+            Everything in this section is created by you and stored on your device. None of it is
+            transmitted anywhere on its own: your tracks, photos, and notes leave the device only
+            when you export, share, or back them up yourself. The one thing the app does send by
+            itself is anonymous diagnostics, which contain none of the below and are described in
+            <a href="#diagnostics">Usage and crash diagnostics</a>.
           </p>
 
           <h3>Location data</h3>
@@ -724,6 +731,8 @@ td code {
             file naming rules, and whether you have completed onboarding.
           </p>
 
+          <!-- Google Drive backup is temporarily disabled in the app, so it collects no Google
+               account email. Restore this heading when the feature is turned back on.
           <h3>Google account email — only if you connect Google Drive</h3>
           <p>
             Google Drive backup is optional and off until you turn it on. If you connect it, the app
@@ -733,24 +742,98 @@ td code {
             <a href="#third-parties">Third-party services</a> for what the app can and cannot see in
             your Drive.
           </p>
+          -->
         </section>
 
         <section id="not-collect">
           <h2>3. What the app never collects</h2>
           <p>To be explicit, Trailmark contains no code that does any of the following:</p>
           <ul>
-            <li>No analytics or usage telemetry of any kind.</li>
             <li>No advertising, ad networks, or advertising identifiers.</li>
-            <li>No third-party crash or performance reporting service.</li>
             <li>No Trailmark user account, login, email address collection, or password.</li>
             <li>No access to your contacts, microphone, SMS, call logs, calendar, or browsing history.</li>
             <li>No device fingerprinting, and no profiling or automated decision-making.</li>
             <li>No sale, rental, or licensing of personal information to anyone.</li>
+            <li>No coordinates, route or place names, descriptions, notes, tags, folder names,
+              search terms, photos, or file names in the diagnostics described next — the app is
+              built so that none of them can be attached to a diagnostic report.</li>
           </ul>
         </section>
 
+        <section id="diagnostics">
+          <h2>4. Usage and crash diagnostics</h2>
+          <p>
+            Trailmark uses two Google Firebase services to understand how the app is used and to
+            find out when it breaks: <strong>Firebase Analytics</strong> and
+            <strong>Firebase Crashlytics</strong>. This is the only data the app sends without you
+            asking it to, and this section describes it in full.
+          </p>
+
+          <h3>Why it exists</h3>
+          <p>
+            Trailmark records multi-hour tracks in the background, often with the screen off and out
+            of signal. When that fails it usually fails silently, and without diagnostics the first
+            we hear of a lost recording is a one-star review that says "lost my hike" with no way to
+            tell which device, which setting, or which bug caused it. Crash reports and feature
+            counts are what make those faults fixable.
+          </p>
+
+          <h3>What is sent</h3>
+          <ul>
+            <li><strong>Feature events.</strong> That an action happened and how it turned out — a
+              recording started, a recording was saved, an export failed, a screen was opened.</li>
+            <li><strong>Numbers and categories describing an action</strong>, never its content: how
+              many points a track has, how long a recording ran, which built-in template or file
+              format was chosen, whether GPS filtering was on, the error type when something
+              failed.</li>
+            <li><strong>Coarse buckets instead of exact figures</strong> where an exact figure would
+              be too identifying — a distance is reported as a range such as "2&ndash;10&nbsp;km",
+              and the size of your route library as a range rather than a count.</li>
+            <li><strong>Crash reports.</strong> The stack trace, and the state the app was in at the
+              time: which screen you were on, whether a recording was running, roughly how large it
+              was, and the quality of the GPS signal.</li>
+            <li><strong>Standard device and app information</strong> collected by Firebase itself:
+              app version, device model, operating-system version, language, coarse region, and a
+              randomly generated installation identifier. That identifier is not your advertising ID
+              and is not linked to any account.</li>
+          </ul>
+
+          <h3>What is never sent</h3>
+          <p>
+            No coordinates, no route or waypoint names, no descriptions, notes, tags, or folder
+            names, no search text, no photos or captions, no file names or file paths, and no email
+            address. Route names and search terms are reported only as a <em>length</em> or a
+            <em>count</em> where they are reported at all. This is enforced in the app's code rather
+            than left to convention: the events it can send are defined in one place, and each one
+            decides which safe values to include.
+          </p>
+          <p>
+            The practical consequence is that a diagnostic report cannot say where you went, what
+            you called it, or what you wrote about it.
+          </p>
+
+          <h3>Turning it off</h3>
+          <p>
+            Both services can be switched off independently and at any time in
+            <em>Settings &rarr; Privacy</em> — one switch for usage analytics, one for crash
+            reporting. Turning a switch off stops collection from that moment, for that install, and
+            the choice survives resetting your other preferences. Nothing else in the app changes or
+            stops working.
+          </p>
+
+          <h3>Where it goes and how long it stays</h3>
+          <p>
+            The data is processed by Google as our processor, under Google's
+            <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase Privacy and Security</a>
+            terms, and may be stored on Google servers outside your country. Crash reports are
+            retained by Crashlytics for up to 90&nbsp;days; aggregated analytics figures are retained
+            for up to 14&nbsp;months. We use it only to fix faults and decide what to build, we do
+            not attempt to identify individual users from it, and we never sell it.
+          </p>
+        </section>
+
         <section id="permissions">
-          <h2>4. Permissions and why</h2>
+          <h2>5. Permissions and why</h2>
           <p>
             Android will ask you to approve the sensitive ones. You can decline or later revoke any
             of them in <strong>Settings &rarr; Apps &rarr; Trailmark &rarr; Permissions</strong>;
@@ -788,7 +871,7 @@ td code {
                 </tr>
                 <tr>
                   <td><code>INTERNET</code><br><code>ACCESS_NETWORK_STATE</code></td>
-                  <td>Loading Google Maps tiles and, if you connect it, talking to Google Drive. Recording, statistics, editing, and navigation all work offline.</td>
+                  <td>Loading Google Maps tiles<!-- and, if you connect it, talking to Google Drive -->, and sending the <a href="#diagnostics">diagnostics</a> described above while they are switched on. Recording, statistics, editing, and navigation all work offline.</td>
                 </tr>
                 <tr>
                   <td><code>CAMERA</code></td>
@@ -800,7 +883,7 @@ td code {
         </section>
 
         <section id="storage">
-          <h2>5. Where your data lives</h2>
+          <h2>6. Where your data lives</h2>
           <p>
             Everything sits in Trailmark's private application sandbox, which other apps on your
             device cannot read:
@@ -838,7 +921,7 @@ td code {
         </section>
 
         <section id="backup">
-          <h2>6. Android system backup</h2>
+          <h2>7. Android system backup</h2>
           <p>
             Trailmark currently allows Android's built-in backup. If backup is enabled in your
             device settings, Android may copy app data — which can include your recorded routes and
@@ -853,7 +936,7 @@ td code {
         </section>
 
         <section id="third-parties">
-          <h2>7. Third-party services</h2>
+          <h2>8. Third-party services</h2>
           <p>
             The app is built on a small number of Google components. When these are used, your data
             is handled under Google's own
@@ -875,12 +958,25 @@ td code {
             <a href="https://www.google.com/help/terms_maps/" target="_blank" rel="noopener">Google Maps/Google Earth Additional Terms of Service</a>.
           </p>
 
+          <!-- Google Drive backup is temporarily disabled in the app, so it contacts no Drive
+               service. Restore this heading when the feature is turned back on.
           <h3>Google Drive — optional</h3>
           <p>
             If, and only if, you connect it, the app can upload and download Trailmark route files.
             Authorisation uses the restricted <code>drive.file</code> scope, which means the app can
             only see and modify files it created itself. Your existing documents, photos, and folders
             in Drive are not visible to the app and are never read or modified.
+          </p>
+          -->
+
+          <h3>Firebase Analytics and Firebase Crashlytics</h3>
+          <p>
+            Used for the anonymous usage and crash diagnostics described in
+            <a href="#diagnostics">Usage and crash diagnostics</a>, which is where the detail of what
+            is and is not sent lives. Both can be switched off in <em>Settings &rarr; Privacy</em>.
+            Google acts as our processor for this data under the
+            <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase Privacy and Security</a>
+            terms.
           </p>
 
           <h3>Google Maps navigation hand-off</h3>
@@ -899,7 +995,7 @@ td code {
         </section>
 
         <section id="sharing">
-          <h2>8. Sharing and export</h2>
+          <h2>9. Sharing and export</h2>
           <p>
             Data leaves your device only through actions you take deliberately:
           </p>
@@ -908,17 +1004,21 @@ td code {
               GeoJSON. A route file contains the full coordinate trace, timestamps, your notes, and —
               for <code>.gptrack</code> — the attached photos. Treat it as sensitive; anyone holding
               it can reconstruct where you were and when.</li>
+            <!-- Drive backup is temporarily disabled.
             <li><strong>Uploading a backup to your own Google Drive.</strong></li>
+            -->
             <li><strong>Handing a destination to another navigation app.</strong></li>
           </ul>
-          <p>We disclose your information to no one else, for any reason, other than where we are legally compelled to — which, having no data, we cannot meaningfully do anyway.</p>
+          <p>Beyond the <a href="#diagnostics">diagnostics</a> above, we disclose your information to no one, for any reason, other than where we are legally compelled to — which, holding none of your route data, we could not meaningfully do anyway.</p>
         </section>
 
         <section id="retention">
-          <h2>9. Retention and deletion</h2>
+          <h2>10. Retention and deletion</h2>
           <p>
-            Data is kept until you delete it. There is no expiry and no server-side copy waiting to
-            be purged.
+            Your routes are kept until you delete them. There is no expiry and no server-side copy of
+            them waiting to be purged. The only exception is the anonymous
+            <a href="#diagnostics">diagnostics</a>, which Google holds on our behalf for up to
+            90&nbsp;days for crash reports and up to 14&nbsp;months for aggregated usage figures.
           </p>
           <ul>
             <li><strong>Delete one route:</strong> remove it in the app. Its points, waypoints, and
@@ -926,23 +1026,27 @@ td code {
             <li><strong>Delete everything:</strong> uninstall Trailmark, or use
               <strong>Settings &rarr; Apps &rarr; Trailmark &rarr; Storage &rarr; Clear storage</strong>.
               This is irreversible.</li>
+            <!-- Drive backup is temporarily disabled, so there is nothing of this kind to delete or
+                 disconnect. Restore both items when the feature is turned back on.
             <li><strong>Delete cloud backups:</strong> remove the uploaded files from within the app's
               Drive screen, or directly in Google Drive.</li>
             <li><strong>Disconnect Google Drive:</strong> disconnect in the app, and revoke the app's
               access at
               <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>.</li>
+            -->
+
             <li><strong>Files you already shared</strong> cannot be recalled by us. You will need to
               delete them wherever you sent them.</li>
           </ul>
         </section>
 
         <section id="security">
-          <h2>10. Security</h2>
+          <h2>11. Security</h2>
           <p>
             Your routes live in Android's private per-app storage, which is protected by the
             operating system's sandbox and by your device's full-disk encryption. Network calls to
-            Google use HTTPS. Route files arriving from outside — a share sheet, an email, a Drive
-            folder — are parsed defensively, with archive path traversal rejected and uncompressed
+            Google use HTTPS. Route files arriving from outside — a share sheet, an email<!--, a Drive
+            folder --> — are parsed defensively, with archive path traversal rejected and uncompressed
             size capped.
           </p>
           <p>
@@ -954,7 +1058,7 @@ td code {
         </section>
 
         <section id="rights">
-          <h2>11. Your rights</h2>
+          <h2>12. Your rights</h2>
           <p>
             Depending on where you live, data protection law — such as the GDPR in the European
             Economic Area and the UK, or the CCPA/CPRA in California — grants you rights to access,
@@ -970,25 +1074,34 @@ td code {
             permissions or removing the app.
           </p>
           <p>
-            We hold no personal data about you, so there is nothing for us to look up, export, or
-            erase on your behalf, and no personal information for us to sell or share for
-            cross-context behavioural advertising. If you believe your rights have not been
-            respected you may complain to your local supervisory authority.
+            The <a href="#diagnostics">diagnostics</a> are the one category we receive, and they are
+            anonymous: they carry a random per-install identifier and no name, email, or coordinate,
+            so we have no way to find "your" reports in order to show or erase them individually. The
+            control we can give you over them is therefore the one that matters — the ability to stop
+            them, in <em>Settings &rarr; Privacy</em>, which is also how you withdraw consent or
+            object to that processing. Uninstalling the app ends it as well.
+          </p>
+          <p>
+            We hold no other personal data about you, nothing for us to look up or export on your
+            behalf, and no personal information for us to sell or share for cross-context behavioural
+            advertising. If you believe your rights have not been respected you may complain to your
+            local supervisory authority.
           </p>
         </section>
 
         <section id="children">
-          <h2>12. Children</h2>
+          <h2>13. Children</h2>
           <p>
             Trailmark is not directed to children under 13 (or the minimum age of digital consent in
             your country, where that is higher), and we do not knowingly collect information from
-            them. As the app transmits nothing to us, a parent or guardian who wants a child's data
-            removed can do so by deleting the routes or uninstalling the app.
+            them. A parent or guardian who wants a child's data removed can do so by deleting the
+            routes or uninstalling the app, and can stop the anonymous
+            <a href="#diagnostics">diagnostics</a> at any time in <em>Settings &rarr; Privacy</em>.
           </p>
         </section>
 
         <section id="changes">
-          <h2>13. Changes to this policy</h2>
+          <h2>14. Changes to this policy</h2>
           <p>
             If the app's data practices change — a new integration, a new permission, an actual
             server — this policy will be updated before or alongside that release, and the "last
@@ -999,7 +1112,7 @@ td code {
         </section>
 
         <section id="contact">
-          <h2>14. Contact</h2>
+          <h2>15. Contact</h2>
           <p>
             Questions about this policy, or about privacy in the app, can go to
             <a href="mailto:levonmyan22@gmail.com">levonmyan22@gmail.com</a>.
