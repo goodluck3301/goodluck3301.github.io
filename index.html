@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Levon M. — Android Developer | Trailmark</title>
+
+<!-- ============================== SEO ============================== -->
+<meta name="description" content="Levon M. is an Android Developer and the maker of Trailmark, a GPS tracker for hikes and journeys that records routes reliably in the background.">
+<meta name="author" content="Levon M.">
+<meta name="keywords" content="Levon M., Android Developer, Trailmark, GPS tracker, hiking app, route recording, GPX, Kotlin">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<link rel="canonical" href="https://example.com/"><!-- TODO: replace with the real domain -->
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Levon M. — Android Developer | Trailmark">
+<meta property="og:description" content="Android Developer and maker of Trailmark, a GPS tracker for hikes and journeys.">
+<meta property="og:url" content="https://example.com/"><!-- TODO: replace with the real domain -->
+<meta property="og:site_name" content="Levon M.">
+<meta property="og:image" content="https://play-lh.googleusercontent.com/hfSpCyTElmkGwZwaJzRqDKz43gmhUDdUxa6NQI4hmcB6eu2w-kCALLtzN0sGRl7H15icA4bonsrQfP1ABMCKDA=w512-h512-rw">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Levon M. — Android Developer | Trailmark">
+<meta name="twitter:description" content="Android Developer and maker of Trailmark, a GPS tracker for hikes and journeys.">
+
+<!-- images are served by the Google Play CDN, so no image files are needed here -->
+<link rel="preconnect" href="https://play-lh.googleusercontent.com" crossorigin>
+<link rel="icon" type="image/webp" href="https://play-lh.googleusercontent.com/hfSpCyTElmkGwZwaJzRqDKz43gmhUDdUxa6NQI4hmcB6eu2w-kCALLtzN0sGRl7H15icA4bonsrQfP1ABMCKDA=w64-h64-rw">
+<link rel="apple-touch-icon" href="https://play-lh.googleusercontent.com/hfSpCyTElmkGwZwaJzRqDKz43gmhUDdUxa6NQI4hmcB6eu2w-kCALLtzN0sGRl7H15icA4bonsrQfP1ABMCKDA=w192-h192-rw">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "#levon",
+      "name": "Levon M.",
+      "jobTitle": "Android Developer",
+      "email": "mailto:levonmyan22@gmail.com",
+      "sameAs": ["https://github.com/goodluck3301"]
+    },
+    {
+      "@type": "MobileApplication",
+      "name": "Trailmark",
+      "operatingSystem": "Android",
+      "applicationCategory": "TravelApplication",
+      "description": "Trailmark is a GPS tracker built for hikes and journeys. It records your route reliably in the background, cleans noisy GPS points, and turns every trip into clear stats, a timeline of places and photos, and a single portable file you can share or navigate again later.",
+      "url": "https://play.google.com/store/apps/details?id=com.goodluck3301.gpstracking",
+      "author": { "@id": "#levon" }
+    }
+  ]
+}
+</script>
+
+<style>
+/* ============================== THEME TOKENS ============================== */
+:root{
+  --maxw:1120px;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --font:"Inter","SF Pro Text",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+[data-theme="dark"]{
+  --accent:#57d69b;            /* mint, taken from the Trailmark mark */
+  --accent-ink:#06150e;
+  --bg:#0b0f0d;
+  --bg-soft:#101613;
+  --surface:rgba(255,255,255,.035);
+  --border:rgba(255,255,255,.09);
+  --border-strong:rgba(255,255,255,.17);
+  --text:#f1f5f2;
+  --muted:#98a5a0;
+  --glow:rgba(87,214,155,.15);
+  --shadow:0 30px 70px -28px rgba(0,0,0,.85);
+}
+[data-theme="light"]{
+  --accent:#12804f;
+  --accent-ink:#ffffff;
+  --bg:#ffffff;
+  --bg-soft:#f5f8f6;
+  --surface:rgba(10,20,15,.025);
+  --border:rgba(10,20,15,.1);
+  --border-strong:rgba(10,20,15,.2);
+  --text:#0b1310;
+  --muted:#586360;
+  --glow:rgba(18,128,79,.1);
+  --shadow:0 30px 70px -34px rgba(11,19,16,.3);
+}
+
+/* ============================== BASE ============================== */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;font-family:var(--font);background:var(--bg);color:var(--text);
+  line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  transition:background .3s var(--ease),color .3s var(--ease);
+}
+h1,h2,h3,h4{margin:0;line-height:1.15;letter-spacing:-.02em;font-weight:650}
+p{margin:0}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+ul{margin:0;padding:0;list-style:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:24px}
+section{padding:clamp(72px,11vw,124px) 0;position:relative}
+
+.eyebrow{
+  font:500 12px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);
+  display:flex;align-items:center;gap:10px;margin-bottom:18px;
+}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--accent);opacity:.7}
+h2.title{font-size:clamp(28px,4.4vw,42px);margin-bottom:16px}
+.lead{color:var(--muted);font-size:clamp(15px,1.6vw,17px);max-width:62ch}
+.lead strong{color:var(--text);font-weight:600}
+
+/* ============================== BACKDROP ============================== */
+.backdrop{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.backdrop::before{
+  content:"";position:absolute;inset:0;
+  background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
+  background-size:64px 64px;opacity:.5;
+  mask-image:radial-gradient(ellipse 80% 55% at 50% 0%,#000 10%,transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse 80% 55% at 50% 0%,#000 10%,transparent 75%);
+}
+.backdrop::after{
+  content:"";position:absolute;top:-240px;left:50%;transform:translateX(-50%);
+  width:min(900px,120vw);height:620px;border-radius:50%;
+  background:radial-gradient(circle,var(--glow),transparent 70%);filter:blur(20px);
+}
+
+/* ============================== NAV ============================== */
+header{
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  background:color-mix(in srgb,var(--bg) 78%,transparent);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s var(--ease),background .3s var(--ease);
+}
+header.scrolled{border-bottom-color:var(--border)}
+nav{display:flex;align-items:center;gap:16px;height:66px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:650;letter-spacing:-.01em;margin-right:auto}
+.brand img{width:30px;height:30px;border-radius:9px;flex:none}
+.brand small{display:block;font:500 11px/1.3 var(--mono);color:var(--muted);letter-spacing:.06em}
+.nav-links{display:flex;gap:4px}
+.nav-links a{padding:8px 14px;border-radius:999px;font-size:14px;color:var(--muted);transition:color .2s,background .2s}
+.nav-links a:hover{color:var(--text);background:var(--surface)}
+.icon-btn{
+  display:grid;place-items:center;width:38px;height:38px;flex:none;
+  border:1px solid var(--border);border-radius:11px;background:var(--surface);
+  color:var(--text);cursor:pointer;transition:border-color .2s,transform .2s var(--ease);
+}
+.icon-btn:hover{border-color:var(--border-strong);transform:translateY(-1px)}
+.icon-btn svg{width:17px;height:17px}
+[data-theme="dark"] .icon-sun{display:none}
+[data-theme="light"] .icon-moon{display:none}
+
+/* ============================== BUTTONS ============================== */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  padding:13px 22px;border-radius:12px;font-size:15px;font-weight:600;
+  border:1px solid transparent;cursor:pointer;white-space:nowrap;
+  transition:transform .2s var(--ease),box-shadow .25s var(--ease),border-color .2s,background .2s;
+}
+.btn svg{width:17px;height:17px;flex:none}
+.btn-primary{background:var(--accent);color:var(--accent-ink)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px -10px var(--accent)}
+.btn-ghost{background:var(--surface);border-color:var(--border);color:var(--text)}
+.btn-ghost:hover{transform:translateY(-2px);border-color:var(--border-strong)}
+
+/* ============================== HERO ============================== */
+.hero{padding-top:clamp(76px,13vw,140px);padding-bottom:clamp(72px,11vw,124px)}
+.hero h1{font-size:clamp(44px,8vw,80px);font-weight:700;letter-spacing:-.035em}
+.hero h1 .role{
+  display:block;background:linear-gradient(100deg,var(--text) 10%,var(--accent));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero p.lead{margin-top:22px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+
+/* the app screenshots are the visual focus — they already include a device frame */
+.shot-card{
+  border-radius:20px;overflow:hidden;border:1px solid var(--border);
+  background:var(--bg-soft);box-shadow:var(--shadow);margin:0;
+  transition:transform .5s var(--ease);
+}
+.shot-card img{width:100%;height:auto}
+
+/* ============================== ABOUT ============================== */
+.about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(28px,5vw,64px)}
+.about-body{display:grid;gap:18px}
+.about-body p{color:var(--muted);font-size:clamp(15px,1.6vw,17px)}
+.about-body strong{color:var(--text);font-weight:600}
+.principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:12px;margin-top:10px}
+.principle{padding:16px;border:1px solid var(--border);border-radius:14px;background:var(--surface);transition:border-color .25s,transform .25s var(--ease)}
+.principle:hover{border-color:var(--border-strong);transform:translateY(-3px)}
+.principle b{display:block;font-size:14.5px;margin-bottom:4px}
+.principle span{font-size:13.5px;color:var(--muted);line-height:1.55}
+
+/* ============================== APP SHOWCASE ============================== */
+#app{background:var(--bg-soft);border-block:1px solid var(--border)}
+.apps{display:grid;gap:clamp(56px,9vw,104px);margin-top:clamp(36px,5vw,52px)}
+.app-top{display:grid;grid-template-columns:1fr .8fr;gap:clamp(32px,6vw,64px);align-items:center}
+.app-head{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.app-icon{width:70px;height:70px;flex:none;border-radius:18px;overflow:hidden;border:1px solid var(--border);background:var(--surface);display:grid;place-items:center}
+.app-icon img{width:100%;height:100%;object-fit:cover}
+.app-icon .ph{font:600 11px/1 var(--mono);color:var(--muted)}
+.app-head h3{font-size:clamp(26px,3.4vw,34px)}
+.app-head .cat{font:500 12px/1.6 var(--mono);color:var(--accent);letter-spacing:.08em;text-transform:uppercase}
+.app-desc{color:var(--muted);font-size:clamp(15px,1.6vw,17px);max-width:58ch}
+.pkg{font:500 12px/1 var(--mono);color:var(--muted);opacity:.75;margin-top:16px;word-break:break-all}
+.block-label{font:600 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:28px 0 14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:6px 12px;border:1px solid var(--border);border-radius:999px;background:var(--surface);font-size:13px;color:var(--muted);transition:color .2s,border-color .2s}
+.chip:hover{color:var(--text);border-color:var(--border-strong)}
+.app-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+
+.gallery{display:flex;gap:16px;align-items:flex-start;justify-content:center}
+.gallery .shot-card{flex:1 1 0;min-width:0;max-width:230px}
+.gallery .shot-card:hover{transform:translateY(-6px)}
+.gallery-empty{
+  width:100%;max-width:230px;aspect-ratio:9/16;border:1px dashed var(--border-strong);border-radius:20px;
+  display:grid;place-items:center;text-align:center;color:var(--muted);
+  font:500 11.5px/1.6 var(--mono);letter-spacing:.05em;
+}
+
+.fgroups{display:grid;grid-template-columns:repeat(auto-fit,minmax(262px,1fr));gap:14px;margin-top:clamp(36px,5vw,52px)}
+.fgroup{padding:22px;border:1px solid var(--border);border-radius:16px;background:var(--bg);transition:border-color .25s,transform .25s var(--ease)}
+.fgroup:hover{border-color:var(--accent);transform:translateY(-3px)}
+.fgroup h4{display:flex;align-items:center;gap:10px;font-size:15.5px;margin-bottom:14px}
+.fgroup h4 svg{width:18px;height:18px;flex:none;color:var(--accent)}
+.fgroup li{display:flex;gap:9px;align-items:flex-start;font-size:14.2px;color:var(--muted);line-height:1.6}
+.fgroup li + li{margin-top:9px}
+.fgroup li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent);opacity:.55;flex:none;margin-top:9px}
+
+/* ============================== TECH ============================== */
+.tech-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-top:clamp(32px,4vw,44px)}
+.tech{
+  display:flex;align-items:center;gap:11px;padding:14px 16px;
+  border:1px solid var(--border);border-radius:13px;background:var(--surface);
+  font-size:14.5px;font-weight:500;transition:border-color .25s,transform .25s var(--ease);
+}
+.tech:hover{border-color:var(--accent);transform:translateY(-3px)}
+.tech i{width:8px;height:8px;border-radius:2px;flex:none;background:var(--accent);opacity:.75}
+
+/* ============================== CONTACT ============================== */
+#contact{background:var(--bg-soft);border-top:1px solid var(--border)}
+.contact-inner{text-align:center;max-width:620px;margin-inline:auto}
+.contact-inner .eyebrow{justify-content:center}
+.contact-inner .lead{margin:0 auto}
+.contact-links{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:34px}
+.contact-card{
+  display:flex;align-items:center;gap:13px;padding:15px 20px;
+  border:1px solid var(--border);border-radius:14px;background:var(--bg);
+  transition:border-color .25s,transform .25s var(--ease);text-align:left;
+}
+.contact-card:hover{border-color:var(--accent);transform:translateY(-3px)}
+.contact-card svg{width:19px;height:19px;flex:none;color:var(--accent)}
+.contact-card small{display:block;font:500 11px/1.4 var(--mono);color:var(--muted);letter-spacing:.07em;text-transform:uppercase}
+.contact-card b{font-weight:550;font-size:14.5px}
+
+/* ============================== FOOTER ============================== */
+footer{border-top:1px solid var(--border);padding:28px 0}
+.footer-inner{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;font-size:13.5px;color:var(--muted)}
+.footer-inner a:hover{color:var(--text)}
+.to-top{display:inline-flex;align-items:center;gap:7px}
+.to-top svg{width:14px;height:14px}
+
+/* ============================== REVEAL ============================== */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+/* ============================== RESPONSIVE ============================== */
+@media (max-width:920px){
+  .about-grid,.app-top{grid-template-columns:1fr}
+  .app-visual{order:-1}
+  .gallery .shot-card{max-width:210px}
+}
+@media (max-width:680px){
+  .nav-links{display:none}
+  .wrap{padding-inline:18px}
+  .hero-actions .btn,.app-actions .btn{flex:1 1 auto}
+  .contact-card{width:100%}
+  .backdrop::before{background-size:44px 44px}
+  .gallery{gap:12px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div class="backdrop" aria-hidden="true"></div>
+
+<!-- ============================== HEADER ============================== -->
+<header id="header">
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="#top" aria-label="Levon M., Android Developer">
+        <img src="https://play-lh.googleusercontent.com/hfSpCyTElmkGwZwaJzRqDKz43gmhUDdUxa6NQI4hmcB6eu2w-kCALLtzN0sGRl7H15icA4bonsrQfP1ABMCKDA=w64-h64-rw" alt="" width="30" height="30">
+        <span>Levon M.<small>Android Developer</small></span>
+      </a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#app">App</a>
+        <a href="#tech">Technologies</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <button class="icon-btn" id="theme-toggle" type="button" aria-label="Toggle color theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============================== HERO ============================== -->
+  <section class="hero wrap" aria-labelledby="hero-title">
+    <h1 id="hero-title">Levon M.<span class="role">Android Developer</span></h1>
+    <p class="lead">I build Android applications end to end — architecture, data layer, and the details of the interface. Right now that means <strong>Trailmark</strong>, a GPS tracker for hikes and journeys.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#app">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.6"/><path d="M10.5 18.5h3"/></svg>
+        View App
+      </a>
+      <a class="btn btn-ghost" href="#contact">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 7 9 6 9-6"/></svg>
+        Contact
+      </a>
+    </div>
+  </section>
+
+  <!-- ============================== ABOUT ============================== -->
+  <section id="about" aria-labelledby="about-title">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="reveal">
+          <p class="eyebrow">About</p>
+          <h2 class="title" id="about-title">Android, done properly.</h2>
+        </div>
+        <div class="about-body reveal">
+          <p>I'm <strong>Levon M.</strong>, an Android Developer building mobile applications independently. I take apps from an idea to a published release on Google Play — planning the architecture, writing the code, and refining the experience until it feels right.</p>
+          <p>My work centers on three things: <strong>quality</strong> code that stays maintainable, <strong>performance</strong> that holds up on real devices, and <strong>clean user experiences</strong> that follow Android's design language instead of fighting it.</p>
+          <div class="principles">
+            <div class="principle"><b>Modern stack</b><span>Kotlin-first, with Jetpack libraries and coroutines throughout.</span></div>
+            <div class="principle"><b>Clean architecture</b><span>Clear layers and testable code that scale as the app grows.</span></div>
+            <div class="principle"><b>Attention to detail</b><span>Smooth motion, sensible states, and polished interactions.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== MY APP ==============================
+       To add another app later: append one object to the APPS array in the
+       script at the bottom of this file. Nothing else needs to change.
+  -->
+  <section id="app" aria-labelledby="app-title">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="eyebrow">My App</p>
+        <h2 class="title" id="app-title">On Google Play</h2>
+        <p class="lead">The application I currently build and maintain.</p>
+      </div>
+      <div class="apps" id="apps-container"><!-- rendered from the APPS array below --></div>
+    </div>
+  </section>
+
+  <!-- ============================== TECHNOLOGIES ============================== -->
+  <section id="tech" aria-labelledby="tech-title">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="eyebrow">Technologies</p>
+        <h2 class="title" id="tech-title">What I build with</h2>
+        <p class="lead">The tools and libraries I reach for on Android projects.</p>
+      </div>
+      <ul class="tech-grid reveal" id="tech-container"><!-- rendered from the TECH array below --></ul>
+    </div>
+  </section>
+
+  <!-- ============================== CONTACT ============================== -->
+  <section id="contact" aria-labelledby="contact-title">
+    <div class="wrap">
+      <div class="contact-inner reveal">
+        <p class="eyebrow">Contact</p>
+        <h2 class="title" id="contact-title">Let's get in touch</h2>
+        <p class="lead">Questions about Trailmark, feedback, or a project idea — email is the fastest way to reach me.</p>
+        <div class="contact-links">
+          <a class="contact-card" href="mailto:levonmyan22@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 7 9 6 9-6"/></svg>
+            <span><small>Email</small><b>levonmyan22@gmail.com</b></span>
+          </a>
+          <a class="contact-card" href="https://github.com/goodluck3301" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.8a10.2 10.2 0 0 0-3.23 19.89c.51.09.7-.22.7-.49v-1.9c-2.84.62-3.44-1.2-3.44-1.2-.46-1.19-1.14-1.5-1.14-1.5-.93-.64.07-.63.07-.63 1.03.07 1.57 1.06 1.57 1.06.91 1.57 2.4 1.12 2.98.85.09-.67.36-1.12.65-1.38-2.27-.26-4.65-1.14-4.65-5.07 0-1.12.4-2.03 1.05-2.75-.1-.26-.45-1.3.1-2.71 0 0 .86-.27 2.8 1.05a9.7 9.7 0 0 1 5.1 0c1.94-1.32 2.8-1.05 2.8-1.05.55 1.41.2 2.45.1 2.71.65.72 1.05 1.63 1.05 2.75 0 3.94-2.39 4.8-4.67 5.06.37.32.7.94.7 1.9v2.82c0 .27.19.59.71.49A10.2 10.2 0 0 0 12 1.8Z"/></svg>
+            <span><small>GitHub</small><b>goodluck3301</b></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============================== FOOTER ============================== -->
+<footer>
+  <div class="wrap footer-inner">
+    <span>&copy; <span id="year">2026</span> Levon M. · Android Developer</span>
+    <a class="to-top" href="#top">Back to top
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+    </a>
+  </div>
+</footer>
+
+<script>
+/* =======================================================================
+   EDIT HERE — all app content lives in the APPS and TECH arrays below.
+   Adding a second or third app = append another object to APPS.
+   Empty fields ("" or []) render as placeholders, never as fake data.
+
+   Images come from the Google Play CDN, which resizes on request:
+   append "=w<width>-h<height>-rw" to any of these base URLs.
+   ======================================================================= */
+const IMG = {
+  logo:  "https://play-lh.googleusercontent.com/hfSpCyTElmkGwZwaJzRqDKz43gmhUDdUxa6NQI4hmcB6eu2w-kCALLtzN0sGRl7H15icA4bonsrQfP1ABMCKDA",
+  shot1: "https://play-lh.googleusercontent.com/NYegVH_LjGKdBtVcnol2RrqoIYus2iyEDPI1zqe-ENnwdRPtqJh8ACupAbnzZPpYrjzlCp5QxypzLMyf9ij5",
+  shot2: "https://play-lh.googleusercontent.com/3bsFCDYXm9hSVsu-iGoSiXaa-KBiDnLoq4kL5iko__-4rhG8nHBuhmNdvIhBdLny5h3zlg8KswI37yWHugCK"
+};
+const sized = (base, size) => `${base}=${size}-rw`;
+
+const APPS = [
+  {
+    name: "Trailmark",
+    category: "GPS Tracking",
+    packageId: "com.goodluck3301.gpstracking",
+    playUrl: "https://play.google.com/store/apps/details?id=com.goodluck3301.gpstracking",
+    icon: sized(IMG.logo, "w144-h144"),
+    description: "Trailmark is a GPS tracker built for hikes and journeys. It records your route reliably in the background, cleans noisy GPS points, and turns every trip into clear stats, a timeline of places and photos, and a single portable file you can share or navigate again later.",
+    screenshots: [
+      { base: IMG.shot1, alt: "Trailmark showing recorded trails on a map view" },
+      { base: IMG.shot2, alt: "Trailmark home screen with tracking presets and recent routes" }
+    ],
+    // TODO: these are placeholders — replace with the stack this app actually uses
+    tech: ["Kotlin", "Android SDK", "Jetpack", "Coroutines & Flow", "Foreground Service", "Location Services", "Room", "Maps SDK"],
+    featureGroups: [
+      {
+        icon: "record",
+        title: "Record with confidence",
+        items: [
+          "Continues tracking with the screen off, app in the background, or device locked",
+          "Filters raw GPS as you go — accuracy, jumps, duplicates, and stationary noise",
+          "Checkpointed sessions so a crash or process death doesn't wipe out your hike",
+          "Pause, resume, and recover unfinished recordings on next launch"
+        ]
+      },
+      {
+        icon: "route",
+        title: "Clean and understand your route",
+        items: [
+          "Clean Route simplifies and removes outliers before you save the result",
+          "Distance, moving time, speed, and elevation gain/loss with clear charts",
+          "Journey Story turns the trip into a shareable summary",
+          "Timeline of waypoints and photos along the track"
+        ]
+      },
+      {
+        icon: "photo",
+        title: "Places and photos",
+        items: [
+          "Named waypoints with categories, notes, and photos",
+          "Photos stay inside the route file — sharing keeps pictures with the track",
+          "Place photos by EXIF location, by time along the route, or by hand"
+        ]
+      },
+      {
+        icon: "navigate",
+        title: "Navigate back",
+        items: [
+          "Follow any recorded route forward or in reverse",
+          "Head to the start, end, or any waypoint",
+          "Live guidance: distance remaining, ETA, next place, and off-route distance"
+        ]
+      },
+      {
+        icon: "file",
+        title: "One file for the whole journey",
+        items: [
+          "Native .gptrack format: points, places, photos, and stats in a single shareable file",
+          "Import and export GPX, KML, and GeoJSON",
+          "Built for real trails — not just a map pin"
+        ]
+      }
+    ]
+  }
+];
+
+const TECH = [
+  "Kotlin", "Android SDK", "Jetpack Compose", "Coroutines & Flow",
+  "Retrofit", "Hilt", "Room", "Firebase",
+  "MVVM / Clean Architecture", "Material 3", "Gradle (KTS)", "Git"
+];
+
+/* ======================= rendering (no edits needed) ==================== */
+const byId = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const svg = d => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+
+const GROUP_ICONS = {
+  record:   svg('<circle cx="12" cy="12" r="3.2"/><circle cx="12" cy="12" r="8.5"/>'),
+  route:    svg('<path d="M4.2 19c4.5 0 3-6 7.5-6S19 8 19 5"/><circle cx="4.2" cy="19" r="1.7"/><circle cx="19" cy="5" r="1.7"/>'),
+  photo:    svg('<rect x="3" y="5.5" width="18" height="14" rx="2.6"/><circle cx="12" cy="12.5" r="3.2"/><path d="M7.5 5.5 8.8 3h6.4l1.3 2.5"/>'),
+  navigate: svg('<path d="M12 2.8 20 21l-8-4.4L4 21 12 2.8Z"/>'),
+  file:     svg('<path d="M13.5 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8.5L13.5 3Z"/><path d="M13.5 3v5.5H19"/>')
+};
+const ICON_PLAY = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4.6a1.6 1.6 0 0 1 2.46-1.35l11.2 7.4a1.6 1.6 0 0 1 0 2.7l-11.2 7.4A1.6 1.6 0 0 1 6 19.4V4.6Z"/></svg>';
+
+function shotMarkup(s) {
+  return `<figure class="shot-card"><img
+    src="${sized(s.base, 'w1052-h592')}"
+    srcset="${sized(s.base, 'w1052-h592')} 330w, ${sized(s.base, 'w1024-h1024')} 572w"
+    sizes="(max-width:920px) 210px, 230px"
+    alt="${esc(s.alt)}" width="572" height="1024" loading="lazy" decoding="async"></figure>`;
+}
+
+function appMarkup(app) {
+  const icon = app.icon
+    ? `<img src="${app.icon}" alt="${esc(app.name)} app icon" width="70" height="70" loading="lazy">`
+    : '<span class="ph">ICON</span>';
+
+  const gallery = app.screenshots?.length
+    ? app.screenshots.map(shotMarkup).join('')
+    : '<div class="gallery-empty">Screenshots<br>coming soon</div>';
+
+  const tech = app.tech?.length
+    ? `<p class="block-label">Built with</p><div class="chips">${app.tech.map(t => `<span class="chip">${esc(t)}</span>`).join('')}</div>`
+    : '';
+
+  const playBtn = app.playUrl
+    ? `<a class="btn btn-primary" href="${esc(app.playUrl)}" target="_blank" rel="noopener noreferrer">${ICON_PLAY} View on Google Play</a>`
+    : `<button class="btn btn-primary" type="button" disabled style="opacity:.55;cursor:not-allowed">${ICON_PLAY} View on Google Play</button>`;
+
+  const groups = app.featureGroups?.length
+    ? `<div class="fgroups">${app.featureGroups.map(g => `
+        <section class="fgroup">
+          <h4>${GROUP_ICONS[g.icon] || ''}${esc(g.title)}</h4>
+          <ul>${g.items.map(i => `<li><span>${esc(i)}</span></li>`).join('')}</ul>
+        </section>`).join('')}</div>`
+    : '';
+
+  return `
+  <article class="app-card reveal">
+    <div class="app-top">
+      <div class="app-info">
+        <div class="app-head">
+          <div class="app-icon">${icon}</div>
+          <div>
+            <p class="cat">${esc(app.category || 'Android App')}</p>
+            <h3>${esc(app.name)}</h3>
+          </div>
+        </div>
+        <p class="app-desc">${esc(app.description)}</p>
+        ${app.packageId ? `<p class="pkg">${esc(app.packageId)}</p>` : ''}
+        ${tech}
+        <div class="app-actions">
+          ${playBtn}
+          <a class="btn btn-ghost" href="#contact">Get in touch</a>
+        </div>
+      </div>
+      <div class="app-visual"><div class="gallery">${gallery}</div></div>
+    </div>
+    ${groups}
+  </article>`;
+}
+
+byId('apps-container').innerHTML = APPS.map(appMarkup).join('');
+byId('tech-container').innerHTML = TECH.map(t => `<li class="tech"><i></i>${esc(t)}</li>`).join('');
+byId('year').textContent = new Date().getFullYear();
+
+/* ============================== THEME ============================== */
+const root = document.documentElement;
+const stored = localStorage.getItem('theme');
+root.dataset.theme = stored || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+byId('theme-toggle').addEventListener('click', () => {
+  root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+  localStorage.setItem('theme', root.dataset.theme);
+});
+
+/* ============================== SCROLL UI ============================== */
+const header = byId('header');
+addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 8), { passive: true });
+
+const io = new IntersectionObserver((entries, obs) => {
+  for (const e of entries) {
+    if (!e.isIntersecting) continue;
+    e.target.classList.add('in');
+    obs.unobserve(e.target);
+  }
+}, { rootMargin: '0px 0px -8% 0px', threshold: .05 });
+document.querySelectorAll('.reveal').forEach((el, i) => {
+  el.style.transitionDelay = `${Math.min(i, 4) * 70}ms`;
+  io.observe(el);
+});
+</script>
+
+<!--
+  DEPLOY NOTE — app-ads.txt
+  AdMob requires app-ads.txt to be served as a separate plain-text file at
+  https://<your-domain>/app-ads.txt . It cannot live inside this HTML file.
+  Create it at the domain root with the AdMob line, for example:
+      google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
+-->
+</body>
+</html>
