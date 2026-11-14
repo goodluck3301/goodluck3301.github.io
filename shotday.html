@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shotday — GLP-1 Shot &amp; Weight Tracker for Android</title>
+<meta name="description" content="Shotday is a private GLP-1 shot and weight tracker for Android: dose reminders, injection-site rotation, an estimated medication level, your real weight trend and a mg-to-units dose calculator. No account, and your health data stays on your phone.">
+<meta name="author" content="Levon Momchyan">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://goodluck3301.github.io/shotday.html">
+<meta name="theme-color" content="#0e7c7b">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Shotday — GLP-1 Shot &amp; Weight Tracker">
+<meta property="og:description" content="Know your shot day and see your real progress. Private, no account, health data stays on your phone.">
+<meta property="og:url" content="https://goodluck3301.github.io/shotday.html">
+<meta property="og:image" content="https://goodluck3301.github.io/assets/shotday/icon-512.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta name="twitter:card" content="summary">
+
+<link rel="icon" type="image/svg+xml" href="assets/shotday/icon.svg">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/shotday/icon-64.png">
+<link rel="apple-touch-icon" href="assets/shotday/icon-192.png">
+<link rel="stylesheet" href="assets/shotday/shotday.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MobileApplication",
+      "name": "Shotday",
+      "alternateName": "Shotday: GLP-1 Shot Tracker",
+      "operatingSystem": "Android",
+      "applicationCategory": "HealthApplication",
+      "description": "A private GLP-1 shot and weight tracker: dose reminders, injection-site rotation, an estimated medication level, weight trend, supply tracking, a dose calculator and a doctor report.",
+      "url": "https://goodluck3301.github.io/shotday.html",
+      "image": "https://goodluck3301.github.io/assets/shotday/icon-512.png",
+      "inLanguage": ["en", "de", "fr"],
+      "author": { "@type": "Person", "name": "Levon Momchyan", "url": "https://goodluck3301.github.io/" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Is Shotday medical advice?", "acceptedAnswer": { "@type": "Answer", "text": "No. Shotday is a personal log. It is not a medical device and does not diagnose, treat or recommend doses. Always follow your prescriber's instructions." } },
+        { "@type": "Question", "name": "Where is my health data stored?", "acceptedAnswer": { "@type": "Answer", "text": "On your phone. There is no Shotday account and no Shotday server. Your doses, weight and notes leave the phone only if you export or share them yourself, or through Android's own encrypted backup to your Google account." } },
+        { "@type": "Question", "name": "How do I convert mg to units?", "acceptedAnswer": { "@type": "Answer", "text": "Divide the dose in mg by the concentration in mg per mL to get mL, then multiply by 100 for a U-100 syringe. For example, 2.5 mg at 10 mg/mL is 0.25 mL, which is 25 units." } }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="inner">
+    <a class="brand" href="shotday.html"><img src="assets/shotday/icon.svg" alt="" width="32" height="32">Shotday</a>
+    <nav class="site-nav" aria-label="Shotday">
+      <a class="opt" href="#features">Features</a>
+      <a class="opt" href="#calculator">Dose calculator</a>
+      <a class="opt" href="#faq">FAQ</a>
+      <a href="shotday-privacy.html">Privacy</a>
+      <a href="shotday-terms.html">Terms</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============================== HERO ============================== -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">GLP-1 shot &amp; weight tracker · Android</span>
+        <h1>Know your <em>shot day</em>.<br>See your real progress.</h1>
+        <p class="lead">
+          Shotday reminds you when your next dose is due, suggests where to inject, estimates how
+          much medication is active, and shows what your weight is really doing, without the
+          day-to-day noise. No account. Your health log stays on your phone.
+        </p>
+        <div class="hero-actions">
+          <span class="btn btn-soon" role="note">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4.6a1.6 1.6 0 0 1 2.46-1.35l11.2 7.4a1.6 1.6 0 0 1 0 2.7l-11.2 7.4A1.6 1.6 0 0 1 6 19.4V4.6Z"/></svg>
+            <span><b>Coming soon</b> to Google Play</span>
+          </span>
+          <a class="btn btn-ghost" href="#calculator">Try the dose calculator</a>
+        </div>
+        <ul class="trust">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.4 7.5 9.5 4.3-1.1 7.5-4.9 7.5-9.5V6L12 3Z"/></svg>No account</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.6"/><path d="M10.5 18.5h3"/></svg>Health data stays on your phone</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Core tracking free</li>
+        </ul>
+      </div>
+      <div class="phones" aria-label="Shotday screenshots">
+        <div class="hero-glow" aria-hidden="true"></div>
+        <figure class="phone"><img src="assets/shotday/shot-today.webp" width="540" height="1120" alt="Shotday Today screen: next dose Monday, next injection site, estimated medication level and weight trend"></figure>
+        <figure class="phone"><img src="assets/shotday/shot-insights.webp" width="540" height="1120" alt="Shotday Insights screen: weight trend chart with dose-step markers and the medication level chart" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== FEATURES ============================== -->
+  <section class="block alt" id="features">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Features</span>
+        <h2>Everything a weekly shot needs, in one calm place</h2>
+        <p>Built for semaglutide, tirzepatide and other GLP-1 medications, including pens, vials and daily tablets.</p>
+      </div>
+      <div class="grid grid-3">
+        <article class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 8 3 8H3s3-1 3-8"/><path d="M10.3 20a1.9 1.9 0 0 0 3.4 0"/></svg></div>
+          <h3>Never guess your shot day</h3>
+          <p>A countdown to your next dose, a reminder on the day and, if you like, the evening before. Logging a dose takes a couple of taps.</p>
+        </article>
+        <article class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="10" r="3"/><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z"/></svg></div>
+          <h3>Injection-site rotation</h3>
+          <p>A body map shows where you injected recently and suggests the site you have used least.</p>
+        </article>
+        <article class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17c2.5 0 2.5-10 5-10s2.5 8 5 8 2.5-6 5-6 2 3 3 3"/></svg></div>
+          <h3>Estimated medication level</h3>
+          <p>A curve of how much medication is likely active, based on published half-life data, with a 7-day projection. An estimate, not a lab value.</p>
+        </article>
+        <article class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20h18"/><path d="M5 16l4-5 4 3 6-8"/></svg></div>
+          <h3>Your real weight trend</h3>
+          <p>A smoothed trend that ignores daily swings, weekly rate, total change and progress to your goal, in kg, lb or stone.</p>
+        </article>
+        <article class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div>
+          <h3>Pens and vials, counted</h3>
+          <p>Supply goes down with every logged dose, with a reminder before you run out. Side effects and food noise take seconds to note.</p>
+        </article>
+        <article class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></div>
+          <h3>A report for your doctor</h3>
+          <p>A PDF summary of doses, weight and side effects, made on your phone, to share at your next appointment. Plus full backup and export.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== SCREENS ============================== -->
+  <section class="block" id="screens">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Inside the app</span>
+        <h2>Clear screens, no clutter</h2>
+      </div>
+      <div class="gallery">
+        <figure><div class="frame"><img src="assets/shotday/shot-today.webp" width="540" height="1120" loading="lazy" alt="Today screen with the next dose, injection site, supply and medication level"></div><figcaption>Today<span>Next dose, site and supply</span></figcaption></figure>
+        <figure><div class="frame"><img src="assets/shotday/shot-log.webp" width="540" height="1120" loading="lazy" alt="Log screen with dose strengths and an injection-site body map"></div><figcaption>Log<span>Dose, site and weight in one save</span></figcaption></figure>
+        <figure><div class="frame"><img src="assets/shotday/shot-insights.webp" width="540" height="1120" loading="lazy" alt="Insights screen with the weight trend and medication level charts"></div><figcaption>Insights<span>Trend, dose steps and goal</span></figcaption></figure>
+        <figure><div class="frame"><img src="assets/shotday/shot-supply.webp" width="540" height="1120" loading="lazy" alt="Medication and supply screen with reminders and pen supply"></div><figcaption>Medication &amp; supply<span>Reminders and pens left</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== FREE VS PLUS ============================== -->
+  <section class="block alt" id="plans">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Free and Plus</span>
+        <h2>The tracking you need is free. Always.</h2>
+        <p>The free version shows a few ads, never on logging screens. Shotday Plus is optional and removes them.</p>
+      </div>
+      <div class="plans">
+        <div class="plan">
+          <h3>Free</h3>
+          <p>Everything for day-to-day tracking.</p>
+          <ul class="checks">
+            <li>Dose, weight and side-effect logging</li>
+            <li>Reminders and injection-site rotation</li>
+            <li>Estimated medication level</li>
+            <li>1- and 3-month weight charts</li>
+            <li>Pen and vial supply tracking</li>
+            <li>Dose calculator, history, backup and export</li>
+            <li>Doctor report or full history by choosing to watch a short ad</li>
+          </ul>
+        </div>
+        <div class="plan plus">
+          <h3>Shotday Plus <span class="tag">Optional</span></h3>
+          <p>For people who want the deeper picture.</p>
+          <ul class="checks">
+            <li>No ads, anywhere</li>
+            <li>Dose insights: weight change per dose step and side effects by day after a dose</li>
+            <li>Full-history charts</li>
+            <li>Unlimited doctor reports</li>
+            <li>More than one medication, custom half-life and accent colours</li>
+          </ul>
+          <p class="fineprint">Monthly, yearly or a one-time lifetime purchase, billed by Google Play in your currency. The app shows the exact price and any trial end date before you pay. Cancel any time in Google Play.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== PRIVACY ============================== -->
+  <section class="block" id="privacy">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Privacy</span>
+        <h2>Private by design</h2>
+        <p>Shotday has no account and no server of its own. Read the <a href="shotday-privacy.html">privacy policy</a> for every detail.</p>
+      </div>
+      <div class="grid grid-3">
+        <article class="card"><h3>Your log stays with you</h3><p>Doses, weight, side effects and notes are stored on your phone. We never receive them.</p></article>
+        <article class="card"><h3>Never used for ads</h3><p>No health data goes to analytics or to ads. Plus members' phones don't request ads at all.</p></article>
+        <article class="card"><h3>You choose</h3><p>Usage statistics and crash reports are optional and can be switched off in Settings at any time.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== CALCULATOR ============================== -->
+  <section class="block alt" id="calculator">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Free tool</span>
+        <h2>GLP-1 dose calculator: mg to units</h2>
+        <p>Work out how many units to draw on a U-100 syringe for a dose in mg. The same calculator is built into the app.</p>
+      </div>
+      <div class="calc">
+        <form id="calc-form" novalidate>
+          <div class="field">
+            <span id="mode-label" style="font-weight:600;font-size:.93rem">Concentration</span>
+            <div class="seg" role="radiogroup" aria-labelledby="mode-label">
+              <input type="radio" name="mode" id="mode-vial" value="vial" checked><label for="mode-vial">Vial + water</label>
+              <input type="radio" name="mode" id="mode-conc" value="conc"><label for="mode-conc">I know the mg/mL</label>
+            </div>
+          </div>
+          <div class="row2" id="vial-fields">
+            <div class="field">
+              <label for="vial-mg">Medication in vial</label>
+              <div class="input"><input id="vial-mg" inputmode="decimal" autocomplete="off" value="20"><span>mg</span></div>
+            </div>
+            <div class="field">
+              <label for="water-ml">Water added</label>
+              <div class="input"><input id="water-ml" inputmode="decimal" autocomplete="off" value="2"><span>mL</span></div>
+            </div>
+          </div>
+          <div class="field" id="conc-field" hidden>
+            <label for="conc">Concentration</label>
+            <div class="input"><input id="conc" inputmode="decimal" autocomplete="off" value="10"><span>mg/mL</span></div>
+            <span class="hint">Printed on the vial label or your pharmacy instructions.</span>
+          </div>
+          <div class="field">
+            <label for="dose">Your dose</label>
+            <div class="input"><input id="dose" inputmode="decimal" autocomplete="off" value="2.5"><span>mg</span></div>
+          </div>
+          <div class="field" style="margin-bottom:0">
+            <span id="syringe-label" style="font-weight:600;font-size:.93rem">Syringe size (U-100)</span>
+            <div class="seg" role="radiogroup" aria-labelledby="syringe-label">
+              <input type="radio" name="syringe" id="s30" value="30"><label for="s30">30 units</label>
+              <input type="radio" name="syringe" id="s50" value="50"><label for="s50">50 units</label>
+              <input type="radio" name="syringe" id="s100" value="100" checked><label for="s100">100 units</label>
+            </div>
+          </div>
+        </form>
+        <div class="result" aria-live="polite">
+          <p style="color:var(--muted);font-weight:600;font-size:.93rem">Draw up to</p>
+          <p class="big"><span id="r-units">25</span><small>units</small></p>
+          <div class="stats">
+            <div><b id="r-ml">0.25 mL</b><span>Volume</span></div>
+            <div><b id="r-conc">10 mg/mL</b><span>Concentration</span></div>
+          </div>
+          <div class="syringe" aria-hidden="true"><i id="r-fill"></i></div>
+          <div class="syringe-scale" aria-hidden="true"><span>0</span><span id="r-half">50</span><span id="r-max">100</span></div>
+          <p class="notice" id="r-notice" hidden></p>
+          <p class="fineprint">For U-100 syringes, where 100 units = 1 mL. This is arithmetic, not dosing advice: always follow the instructions from your prescriber or pharmacy, and double-check every dose before you inject.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== FAQ ============================== -->
+  <section class="block" id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">FAQ</span>
+        <h2>Questions people ask</h2>
+      </div>
+      <div class="faq">
+        <details><summary>Is Shotday medical advice?</summary><p>No. Shotday is a personal log. It is not a medical device and it does not diagnose, treat or recommend doses. The medication level is an estimate from published half-life data, not a lab value. Always follow your prescriber's instructions.</p></details>
+        <details><summary>Which medications does it support?</summary><p>Weekly and daily GLP-1 medications: semaglutide (injections and tablets), tirzepatide, liraglutide, dulaglutide and orforglipron, as brand-name or compounded products. You can also add any other medication with your own schedule.</p></details>
+        <details><summary>Where is my data stored?</summary><p>On your phone. There is no Shotday account and no Shotday server. Your log leaves the phone only if you export or share it yourself, or through Android's own encrypted backup to your Google account, which you control in Android settings.</p></details>
+        <details><summary>Does it work offline?</summary><p>Yes. Logging, reminders, charts and the calculator all work without a connection. The internet is used only for ads in the free version, purchases, and the optional usage statistics and crash reports.</p></details>
+        <details><summary>What does Plus cost, and can I cancel?</summary><p>Plus is available monthly, yearly or as a one-time lifetime purchase. Google Play shows the exact price in your currency before you pay. Subscriptions can be cancelled any time in Google Play under Payments &amp; subscriptions, and you keep Plus until the end of the paid period.</p></details>
+        <details><summary>Which languages are available?</summary><p>English, German and French, with kg, lb or stone, and 12- or 24-hour time.</p></details>
+        <details><summary>When can I download it?</summary><p>Shotday is in testing and coming to Google Play soon. This page will link to it as soon as it is available.</p></details>
+      </div>
+      <p class="disclaimer"><b>Medical disclaimer.</b> Shotday is for personal record-keeping only and does not replace professional medical advice. Talk to your healthcare provider about your treatment. In an emergency, call your local emergency number. Medication names are trademarks of their respective owners; Shotday is not affiliated with or endorsed by any drug manufacturer.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="inner">
+    <span>&copy; <span id="year">2026</span> Levon Momchyan</span>
+    <nav aria-label="Footer">
+      <a href="index.html">All apps</a>
+      <a href="shotday-privacy.html">Privacy Policy</a>
+      <a href="shotday-terms.html">Terms of Use</a>
+      <a href="mailto:levonmyan22@gmail.com?subject=Shotday">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const num = el => {
+    const v = parseFloat(String(el.value).trim().replace(",", "."));
+    return Number.isFinite(v) && v > 0 ? v : null;
+  };
+  const fmt = (v, digits) => Number(v.toFixed(digits)).toLocaleString(undefined, { maximumFractionDigits: digits });
+
+  function update() {
+    const mode = document.querySelector('input[name="mode"]:checked').value;
+    const syringe = Number(document.querySelector('input[name="syringe"]:checked').value);
+    $("vial-fields").hidden = mode !== "vial";
+    $("conc-field").hidden = mode !== "conc";
+    $("r-half").textContent = syringe / 2;
+    $("r-max").textContent = syringe;
+
+    const conc = mode === "vial"
+      ? (num($("vial-mg")) && num($("water-ml")) ? num($("vial-mg")) / num($("water-ml")) : null)
+      : num($("conc"));
+    const dose = num($("dose"));
+    const notice = $("r-notice");
+    notice.hidden = true;
+
+    if (!conc || !dose) {
+      $("r-units").textContent = "—";
+      $("r-ml").textContent = "—";
+      $("r-conc").textContent = conc ? fmt(conc, 2) + " mg/mL" : "—";
+      $("r-fill").style.width = "0";
+      return;
+    }
+    const ml = dose / conc;
+    const units = ml * 100;
+    $("r-units").textContent = fmt(units, 1);
+    $("r-ml").textContent = fmt(ml, 3) + " mL";
+    $("r-conc").textContent = fmt(conc, 2) + " mg/mL";
+    $("r-fill").style.width = Math.min(units / syringe, 1) * 100 + "%";
+
+    if (units > syringe) {
+      notice.textContent = "This is more than one full " + syringe + "-unit syringe. Check the concentration and your instructions with your pharmacist.";
+      notice.hidden = false;
+    } else if (units < 2) {
+      notice.textContent = "This is a very small volume that is hard to measure accurately. Check the concentration with your pharmacist.";
+      notice.hidden = false;
+    }
+  }
+
+  $("calc-form").addEventListener("input", update);
+  $("calc-form").addEventListener("change", update);
+  update();
+  $("year").textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>

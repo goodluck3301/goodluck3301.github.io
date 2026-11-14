@@ -3,30 +3,30 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Levon M. — Android Developer | Trailmark</title>
+<title>Levon M. — Android Developer | Trailmark &amp; Shotday</title>
 
 <!-- ============================== SEO ============================== -->
-<meta name="description" content="Levon M. is an Android Developer and the maker of Trailmark, a GPS tracker for hikes and journeys that records routes reliably in the background.">
+<meta name="description" content="Levon M. is an Android Developer and the maker of Trailmark, a GPS tracker for hikes and journeys, and Shotday, a private GLP-1 shot and weight tracker.">
 <meta name="author" content="Levon M.">
-<meta name="keywords" content="Levon M., Android Developer, Trailmark, GPS tracker, hiking app, route recording, GPX, Kotlin">
+<meta name="keywords" content="Levon M., Android Developer, Trailmark, GPS tracker, hiking app, GPX, Shotday, GLP-1 tracker, shot tracker, weight tracker, Kotlin">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-<link rel="canonical" href="https://example.com/"><!-- TODO: replace with the real domain -->
+<link rel="canonical" href="https://goodluck3301.github.io/">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Levon M. — Android Developer | Trailmark">
-<meta property="og:description" content="Android Developer and maker of Trailmark, a GPS tracker for hikes and journeys.">
-<meta property="og:url" content="https://example.com/"><!-- TODO: replace with the real domain -->
+<meta property="og:title" content="Levon M. — Android Developer | Trailmark &amp; Shotday">
+<meta property="og:description" content="Android Developer and maker of Trailmark, a GPS tracker for hikes and journeys, and Shotday, a private GLP-1 shot and weight tracker.">
+<meta property="og:url" content="https://goodluck3301.github.io/">
 <meta property="og:site_name" content="Levon M.">
 <meta property="og:image" content="https://play-lh.googleusercontent.com/hfSpCyTElmkGwZwaJzRqDKz43gmhUDdUxa6NQI4hmcB6eu2w-kCALLtzN0sGRl7H15icA4bonsrQfP1ABMCKDA=w512-h512-rw">
 <meta property="og:image:width" content="512">
 <meta property="og:image:height" content="512">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Levon M. — Android Developer | Trailmark">
-<meta name="twitter:description" content="Android Developer and maker of Trailmark, a GPS tracker for hikes and journeys.">
+<meta name="twitter:title" content="Levon M. — Android Developer | Trailmark &amp; Shotday">
+<meta name="twitter:description" content="Android Developer and maker of Trailmark and Shotday.">
 
-<!-- images are served by the Google Play CDN, so no image files are needed here -->
+<!-- Trailmark images are served by the Google Play CDN; Shotday's live in assets/shotday/ until it is on Play -->
 <link rel="preconnect" href="https://play-lh.googleusercontent.com" crossorigin>
 <link rel="icon" type="image/webp" href="https://play-lh.googleusercontent.com/hfSpCyTElmkGwZwaJzRqDKz43gmhUDdUxa6NQI4hmcB6eu2w-kCALLtzN0sGRl7H15icA4bonsrQfP1ABMCKDA=w64-h64-rw">
 <link rel="apple-touch-icon" href="https://play-lh.googleusercontent.com/hfSpCyTElmkGwZwaJzRqDKz43gmhUDdUxa6NQI4hmcB6eu2w-kCALLtzN0sGRl7H15icA4bonsrQfP1ABMCKDA=w192-h192-rw">
@@ -50,6 +50,15 @@
       "applicationCategory": "TravelApplication",
       "description": "Trailmark is a GPS tracker built for hikes and journeys. It records your route reliably in the background, cleans noisy GPS points, and turns every trip into clear stats, a timeline of places and photos, and a single portable file you can share or navigate again later.",
       "url": "https://play.google.com/store/apps/details?id=com.goodluck3301.gpstracking",
+      "author": { "@id": "#levon" }
+    },
+    {
+      "@type": "MobileApplication",
+      "name": "Shotday",
+      "operatingSystem": "Android",
+      "applicationCategory": "HealthApplication",
+      "description": "Shotday is a private GLP-1 shot and weight tracker: dose reminders, injection-site rotation, an estimated medication level, a smoothed weight trend and a dose calculator. No account, and the health log stays on the phone.",
+      "url": "https://goodluck3301.github.io/shotday.html",
       "author": { "@id": "#levon" }
     }
   ]
@@ -171,6 +180,7 @@ nav{display:flex;align-items:center;gap:16px;height:66px}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px -10px var(--accent)}
 .btn-ghost{background:var(--surface);border-color:var(--border);color:var(--text)}
 .btn-ghost:hover{transform:translateY(-2px);border-color:var(--border-strong)}
+.btn-soon{background:transparent;border:1px dashed var(--border-strong);color:var(--muted);cursor:default}
 
 /* ============================== HERO ============================== */
 .hero{padding-top:clamp(76px,13vw,140px);padding-bottom:clamp(72px,11vw,124px)}
@@ -218,6 +228,9 @@ nav{display:flex;align-items:center;gap:16px;height:66px}
 .chip{padding:6px 12px;border:1px solid var(--border);border-radius:999px;background:var(--surface);font-size:13px;color:var(--muted);transition:color .2s,border-color .2s}
 .chip:hover{color:var(--text);border-color:var(--border-strong)}
 .app-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.app-links{display:flex;flex-wrap:wrap;gap:18px;margin-top:16px;font-size:13.5px}
+.app-links a{color:var(--muted);text-decoration:underline;text-decoration-color:var(--border-strong);text-underline-offset:3px}
+.app-links a:hover{color:var(--text)}
 
 .gallery{display:flex;gap:16px;align-items:flex-start;justify-content:center}
 .gallery .shot-card{flex:1 1 0;min-width:0;max-width:230px}
@@ -308,7 +321,7 @@ footer{border-top:1px solid var(--border);padding:28px 0}
       </a>
       <div class="nav-links">
         <a href="#about">About</a>
-        <a href="#app">App</a>
+        <a href="#app">Apps</a>
         <a href="#tech">Technologies</a>
         <a href="#contact">Contact</a>
       </div>
@@ -325,11 +338,11 @@ footer{border-top:1px solid var(--border);padding:28px 0}
   <!-- ============================== HERO ============================== -->
   <section class="hero wrap" aria-labelledby="hero-title">
     <h1 id="hero-title">Levon M.<span class="role">Android Developer</span></h1>
-    <p class="lead">I build Android applications end to end — architecture, data layer, and the details of the interface. Right now that means <strong>Trailmark</strong>, a GPS tracker for hikes and journeys.</p>
+    <p class="lead">I build Android applications end to end — architecture, data layer, and the details of the interface. Right now that means <strong>Trailmark</strong>, a GPS tracker for hikes and journeys, and <strong>Shotday</strong>, a private GLP-1 shot and weight tracker.</p>
     <div class="hero-actions">
       <a class="btn btn-primary" href="#app">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.6"/><path d="M10.5 18.5h3"/></svg>
-        View App
+        View Apps
       </a>
       <a class="btn btn-ghost" href="#contact">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 7 9 6 9-6"/></svg>
@@ -366,9 +379,9 @@ footer{border-top:1px solid var(--border);padding:28px 0}
   <section id="app" aria-labelledby="app-title">
     <div class="wrap">
       <div class="reveal">
-        <p class="eyebrow">My App</p>
-        <h2 class="title" id="app-title">On Google Play</h2>
-        <p class="lead">The application I currently build and maintain.</p>
+        <p class="eyebrow">My Apps</p>
+        <h2 class="title" id="app-title">Apps I build</h2>
+        <p class="lead">The applications I currently build and maintain.</p>
       </div>
       <div class="apps" id="apps-container"><!-- rendered from the APPS array below --></div>
     </div>
@@ -392,7 +405,7 @@ footer{border-top:1px solid var(--border);padding:28px 0}
       <div class="contact-inner reveal">
         <p class="eyebrow">Contact</p>
         <h2 class="title" id="contact-title">Let's get in touch</h2>
-        <p class="lead">Questions about Trailmark, feedback, or a project idea — email is the fastest way to reach me.</p>
+        <p class="lead">Questions about Trailmark or Shotday, feedback, or a project idea — email is the fastest way to reach me.</p>
         <div class="contact-links">
           <a class="contact-card" href="mailto:levonmyan22@gmail.com">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 7 9 6 9-6"/></svg>
@@ -446,6 +459,10 @@ const APPS = [
       { base: IMG.shot1, alt: "Trailmark showing recorded trails on a map view" },
       { base: IMG.shot2, alt: "Trailmark home screen with tracking presets and recent routes" }
     ],
+    links: [
+      { label: "Privacy Policy", href: "privacy.html" },
+      { label: "Terms of Use", href: "terms.html" }
+    ],
     // TODO: these are placeholders — replace with the stack this app actually uses
     tech: ["Kotlin", "Android SDK", "Jetpack", "Coroutines & Flow", "Foreground Service", "Location Services", "Room", "Maps SDK"],
     featureGroups: [
@@ -497,6 +514,62 @@ const APPS = [
         ]
       }
     ]
+  },
+  {
+    name: "Shotday",
+    category: "GLP-1 Tracking · Coming soon",
+    packageId: "com.pkay.shotday",
+    playUrl: "",           // set once the Play listing is live
+    pageUrl: "shotday.html",
+    icon: "assets/shotday/icon-192.png",
+    description: "Shotday is a private companion for GLP-1 treatment. It shows when the next dose is due, suggests where to inject, estimates how much medication is active, and turns daily weigh-ins into a calm, smoothed trend. There is no account: the health log stays on the phone.",
+    screenshots: [
+      { src: "assets/shotday/shot-today.webp", alt: "Shotday Today screen with the next dose, injection site, supply and estimated medication level" },
+      { src: "assets/shotday/shot-insights.webp", alt: "Shotday Insights screen with the weight trend and medication level charts" }
+    ],
+    links: [
+      { label: "Privacy Policy", href: "shotday-privacy.html" },
+      { label: "Terms of Use", href: "shotday-terms.html" }
+    ],
+    tech: ["Kotlin", "Jetpack Compose", "Material 3", "Hilt", "Room", "DataStore", "Coroutines & Flow", "Glance widget", "Play Billing", "AdMob + UMP", "Firebase"],
+    featureGroups: [
+      {
+        icon: "bell",
+        title: "Never guess your shot day",
+        items: [
+          "Countdown to the next dose, with reminders on the day and the evening before",
+          "Two-tap logging for dose, injection site and weight",
+          "Weekly, daily and custom schedules, for pens, vials and tablets"
+        ]
+      },
+      {
+        icon: "chart",
+        title: "See real progress",
+        items: [
+          "Smoothed weight trend that ignores day-to-day swings",
+          "Estimated medication level from published half-life data",
+          "Dose-step markers, weekly rate and progress to goal"
+        ]
+      },
+      {
+        icon: "syringe",
+        title: "Practical tools",
+        items: [
+          "Injection-site rotation map with a suggested next site",
+          "Pen and vial supply that counts down with every dose",
+          "Dose calculator: mg to units and mL for U-100 syringes"
+        ]
+      },
+      {
+        icon: "shield",
+        title: "Private by design",
+        items: [
+          "No account and no server: the health log stays on the phone",
+          "No health data in analytics or ads, ever",
+          "Doctor report PDF and full backup, made on the device"
+        ]
+      }
+    ]
   }
 ];
 
@@ -516,11 +589,19 @@ const GROUP_ICONS = {
   route:    svg('<path d="M4.2 19c4.5 0 3-6 7.5-6S19 8 19 5"/><circle cx="4.2" cy="19" r="1.7"/><circle cx="19" cy="5" r="1.7"/>'),
   photo:    svg('<rect x="3" y="5.5" width="18" height="14" rx="2.6"/><circle cx="12" cy="12.5" r="3.2"/><path d="M7.5 5.5 8.8 3h6.4l1.3 2.5"/>'),
   navigate: svg('<path d="M12 2.8 20 21l-8-4.4L4 21 12 2.8Z"/>'),
-  file:     svg('<path d="M13.5 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8.5L13.5 3Z"/><path d="M13.5 3v5.5H19"/>')
+  file:     svg('<path d="M13.5 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8.5L13.5 3Z"/><path d="M13.5 3v5.5H19"/>'),
+  bell:     svg('<path d="M6 8a6 6 0 1 1 12 0c0 7 3 8 3 8H3s3-1 3-8"/><path d="M10.3 20a1.9 1.9 0 0 0 3.4 0"/>'),
+  chart:    svg('<path d="M3 20h18"/><path d="M5 16l4-5 4 3 6-8"/>'),
+  syringe:  svg('<path d="m18 2 4 4M17 7l3-3M19 9 8.7 19.3a1 1 0 0 1-1.4 0l-2.6-2.6a1 1 0 0 1 0-1.4L15 5M9 11l4 4M5 19l-3 3M14 4l6 6"/>'),
+  shield:   svg('<path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.4 7.5 9.5 4.3-1.1 7.5-4.9 7.5-9.5V6L12 3Z"/><path d="m9 12 2 2 4-4"/>')
 };
 const ICON_PLAY = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4.6a1.6 1.6 0 0 1 2.46-1.35l11.2 7.4a1.6 1.6 0 0 1 0 2.7l-11.2 7.4A1.6 1.6 0 0 1 6 19.4V4.6Z"/></svg>';
 
 function shotMarkup(s) {
+  if (s.src) {
+    return `<figure class="shot-card"><img src="${esc(s.src)}"
+    alt="${esc(s.alt)}" width="540" height="1120" loading="lazy" decoding="async"></figure>`;
+  }
   return `<figure class="shot-card"><img
     src="${sized(s.base, 'w1052-h592')}"
     srcset="${sized(s.base, 'w1052-h592')} 330w, ${sized(s.base, 'w1024-h1024')} 572w"
@@ -543,7 +624,15 @@ function appMarkup(app) {
 
   const playBtn = app.playUrl
     ? `<a class="btn btn-primary" href="${esc(app.playUrl)}" target="_blank" rel="noopener noreferrer">${ICON_PLAY} View on Google Play</a>`
-    : `<button class="btn btn-primary" type="button" disabled style="opacity:.55;cursor:not-allowed">${ICON_PLAY} View on Google Play</button>`;
+    : `<span class="btn btn-soon" aria-disabled="true">${ICON_PLAY} Coming soon to Google Play</span>`;
+
+  const secondaryBtn = app.pageUrl
+    ? `<a class="btn btn-ghost" href="${esc(app.pageUrl)}">About ${esc(app.name)}</a>`
+    : '<a class="btn btn-ghost" href="#contact">Get in touch</a>';
+
+  const links = app.links?.length
+    ? `<p class="app-links">${app.links.map(l => `<a href="${esc(l.href)}">${esc(l.label)}</a>`).join('')}</p>`
+    : '';
 
   const groups = app.featureGroups?.length
     ? `<div class="fgroups">${app.featureGroups.map(g => `
@@ -569,8 +658,9 @@ function appMarkup(app) {
         ${tech}
         <div class="app-actions">
           ${playBtn}
-          <a class="btn btn-ghost" href="#contact">Get in touch</a>
+          ${secondaryBtn}
         </div>
+        ${links}
       </div>
       <div class="app-visual"><div class="gallery">${gallery}</div></div>
     </div>
