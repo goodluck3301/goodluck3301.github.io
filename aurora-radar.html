@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aurora Radar — Northern Lights Forecast &amp; Alerts for Android</title>
+<meta name="description" content="Can you see the northern lights tonight? Aurora Radar gives your chance on a phone camera and to the naked eye, a live NOAA aurora map, the Kp forecast and alerts that respect your sleep. No account.">
+<meta name="author" content="Levon Momchyan">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://goodluck3301.github.io/aurora-radar.html">
+<meta name="theme-color" content="#070b1a">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Aurora Radar — Northern Lights Forecast &amp; Alerts">
+<meta property="og:description" content="Tonight's aurora chance for your town, on camera and to the naked eye. Live NOAA map, Kp forecast and alerts with quiet hours.">
+<meta property="og:url" content="https://goodluck3301.github.io/aurora-radar.html">
+<meta property="og:image" content="https://goodluck3301.github.io/assets/aurora-radar/social.jpg">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="500">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/svg+xml" href="assets/aurora-radar/icon.svg">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/aurora-radar/icon-64.png">
+<link rel="apple-touch-icon" href="assets/aurora-radar/icon-192.png">
+<link rel="preconnect" href="https://services.swpc.noaa.gov" crossorigin>
+<link rel="stylesheet" href="assets/aurora-radar/aurora.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MobileApplication",
+      "name": "Aurora Radar",
+      "alternateName": "Aurora Radar: Northern Lights",
+      "operatingSystem": "Android",
+      "applicationCategory": "WeatherApplication",
+      "description": "Northern lights forecast for your place: tonight's chance on a phone camera and to the naked eye, a live NOAA aurora map, the Kp forecast and alerts with quiet hours.",
+      "url": "https://goodluck3301.github.io/aurora-radar.html",
+      "image": "https://goodluck3301.github.io/assets/aurora-radar/icon-512.png",
+      "inLanguage": "en",
+      "author": { "@type": "Person", "name": "Levon Momchyan", "url": "https://goodluck3301.github.io/" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Is the aurora forecast guaranteed?", "acceptedAnswer": { "@type": "Answer", "text": "No. The aurora is hard to predict. Aurora Radar's chances are estimates built from NOAA data, darkness, moonlight and the cloud forecast. They are a guide to when it is worth going outside, not a promise." } },
+        { "@type": "Question", "name": "What Kp do I need to see the northern lights?", "acceptedAnswer": { "@type": "Answer", "text": "It depends on your magnetic latitude. Under the auroral oval (Tromsø, Fairbanks, Reykjavík) Kp 0 to 1 is often enough on a dark, clear night. Edinburgh and Hobart need about Kp 4 for a good chance on a phone camera, and London or Minneapolis about Kp 5.5." } },
+        { "@type": "Question", "name": "Does Aurora Radar work in the southern hemisphere?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. It works for the aurora australis too, for example in Tasmania and New Zealand, and the live map has a southern view." } }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="inner">
+    <a class="brand" href="aurora-radar.html"><img src="assets/aurora-radar/icon.svg" alt="" width="32" height="32">Aurora Radar</a>
+    <nav class="site-nav" aria-label="Aurora Radar">
+      <a class="opt" href="#live">Live Kp</a>
+      <a class="opt" href="#features">Features</a>
+      <a class="opt" href="#kp">Kp guide</a>
+      <a class="opt" href="#faq">FAQ</a>
+      <a href="aurora-radar-privacy.html">Privacy</a>
+      <a href="aurora-radar-terms.html">Terms</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============================== HERO ============================== -->
+  <section class="hero sky">
+    <div class="curtains" aria-hidden="true"><div class="curtain c2"></div><div class="curtain c1"></div><div class="curtain c3"></div></div>
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Northern &amp; southern lights · Android</span>
+        <h1>Can you see the aurora <span class="grad">tonight?</span></h1>
+        <p class="lead">
+          Aurora Radar turns live NOAA space-weather data, darkness, moonlight and clouds into one
+          honest answer for your town: your chance on a phone camera, your chance with the naked eye,
+          and when to look.
+        </p>
+        <div class="hero-actions">
+          <span class="btn btn-soon" role="note">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4.6a1.6 1.6 0 0 1 2.46-1.35l11.2 7.4a1.6 1.6 0 0 1 0 2.7l-11.2 7.4A1.6 1.6 0 0 1 6 19.4V4.6Z"/></svg>
+            <span><b>Coming soon</b> to Google Play</span>
+          </span>
+          <a class="btn btn-ghost" href="#live">See the Kp right now</a>
+        </div>
+        <ul class="trust">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.4 7.5 9.5 4.3-1.1 7.5-4.9 7.5-9.5V6L12 3Z"/></svg>No account</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="10" r="3"/><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z"/></svg>Places stay on your phone</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Core features free</li>
+        </ul>
+      </div>
+      <div class="phones" aria-label="Aurora Radar screenshots">
+        <figure class="phone"><img src="assets/aurora-radar/shot-tonight.webp" width="540" height="1200" alt="Tonight screen for Hobart: Go outside now, 86% chance on camera and 62% to the naked eye, during a simulated strong storm"></figure>
+        <figure class="phone"><img src="assets/aurora-radar/shot-map.webp" width="540" height="1200" alt="Live aurora map from NOAA's OVATION model over the northern hemisphere"></figure>
+        <figcaption>Example during a simulated strong storm</figcaption>
+      </div>
+    </div>
+    <svg class="mountains" viewBox="0 0 1440 170" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0 170V118l120-46 70 34 150-78 110 62 60-26 170 86 140-70 90 38 160-92 120 70 80-24 170 88v10z"/></svg>
+  </section>
+
+  <!-- ============================== LIVE ============================== -->
+  <section class="block" id="live">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Live from NOAA</span>
+        <h2>How active is the aurora right now?</h2>
+        <p>The planetary Kp index and NOAA's 3-day forecast, straight from the Space Weather Prediction Center. Times are in your time zone.</p>
+      </div>
+
+      <div class="live" id="live-panel">
+        <div class="panel">
+          <h3>Kp right now</h3>
+          <div class="gauge">
+            <svg viewBox="0 0 240 132" aria-hidden="true">
+              <defs>
+                <linearGradient id="arc" x1="20" y1="0" x2="220" y2="0" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#3df5a6"/><stop offset=".45" stop-color="#22c3c9"/><stop offset=".8" stop-color="#9a6bff"/><stop offset="1" stop-color="#ff6fae"/>
+                </linearGradient>
+              </defs>
+              <path class="track" d="M20 120 A100 100 0 0 1 220 120" fill="none" stroke-width="16" stroke-linecap="round"/>
+              <path id="kp-arc" d="M20 120 A100 100 0 0 1 220 120" fill="none" stroke="url(#arc)" stroke-width="16" stroke-linecap="round" stroke-dasharray="0 400"/>
+            </svg>
+            <div class="value"><b id="kp-now">–</b><span>of 9</span></div>
+          </div>
+          <div class="level"><span class="pill" id="kp-level"><i></i><span>Loading…</span></span></div>
+          <p class="updated" id="kp-updated">&nbsp;</p>
+        </div>
+
+        <div class="panel">
+          <h3>Kp, last 24 hours and next 3 days</h3>
+          <div class="bars" id="kp-bars" role="img" aria-label="Kp forecast chart"></div>
+          <div class="day-labels" id="kp-days" aria-hidden="true"></div>
+          <div class="legend" aria-hidden="true">
+            <span><i style="background:#4a5a92"></i>Quiet</span>
+            <span><i style="background:#22c3c9"></i>Active (Kp 4)</span>
+            <span><i style="background:#3df5a6"></i>G1 (Kp 5)</span>
+            <span><i style="background:#9a6bff"></i>G2 (Kp 6)</span>
+            <span><i style="background:#ff6fae"></i>G3+ (Kp 7+)</span>
+            <span>Faded bars are NOAA's forecast</span>
+          </div>
+          <p class="peak-line" id="kp-peak">&nbsp;</p>
+          <div class="reach" id="kp-reach"></div>
+        </div>
+      </div>
+      <p class="live-error" id="live-error" hidden>NOAA's live data couldn't be loaded right now. The rest of this page works without it; try again in a few minutes.</p>
+      <p class="source">Data: NOAA Space Weather Prediction Center, estimated 1-minute Kp and the 3-day Kp forecast. Kp is a planetary 3-hour index, so it is only part of the picture: the app also uses NOAA's aurora map, the solar wind, darkness, the moon and clouds for your place.</p>
+    </div>
+  </section>
+
+  <!-- ============================== FEATURES ============================== -->
+  <section class="block alt" id="features">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Features</span>
+        <h2>One answer instead of ten dashboards</h2>
+        <p>Built for mid-latitude hopefuls, aurora travellers and phone photographers, in both hemispheres.</p>
+      </div>
+      <div class="grid grid-3">
+        <article class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16a8 8 0 1 1 16 0"/><path d="m12 16 4-5"/></svg></div>
+          <h3>Tonight, for your place</h3>
+          <p>A camera chance and a naked-eye chance, a plain verdict, the best time to look and the direction to face, with clouds, darkness and moonlight included.</p>
+        </article>
+        <article class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3.6 9h16.8M3.6 15h16.8M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div>
+          <h3>Live aurora map</h3>
+          <p>NOAA's 30 to 90 minute OVATION forecast for both hemispheres, with a line showing how far away aurora can still appear low on your horizon.</p>
+        </article>
+        <article class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20h18"/><path d="M6 17V11M10 17V7M14 17v-5M18 17V9"/></svg></div>
+          <h3>Kp forecast and storms</h3>
+          <p>The 3-day Kp forecast, NOAA watches and alerts and the live solar wind, all in your place's local time, even when you plan from another time zone.</p>
+        </article>
+        <article class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 8 3 8H3s3-1 3-8"/><path d="M10.3 20a1.9 1.9 0 0 0 3.4 0"/></svg></div>
+          <h3>Alerts that respect your sleep</h3>
+          <p>Choose big shows only, good photo chances, or any chance on camera. Quiet hours keep faint glows from waking you, and alerts match what you see when you open the app.</p>
+        </article>
+        <article class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2.5"/><circle cx="12" cy="12.5" r="3.2"/><path d="M8 6l1.4-2.2h5.2L16 6"/></svg></div>
+          <h3>Get the shot</h3>
+          <p>Short guides to photographing aurora with your phone, to what Kp really means, and to the solar wind numbers experienced chasers watch.</p>
+        </article>
+        <article class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.4 7.5 9.5 4.3-1.1 7.5-4.9 7.5-9.5V6L12 3Z"/><path d="m9 12 2 2 4-4"/></svg></div>
+          <h3>Honest by design</h3>
+          <p>No account. Ads are muted, full-screen ads never interrupt you when you open an alert or while aurora is likely, and between-screen ads are capped at three a day.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== HOW IT WORKS ============================== -->
+  <section class="block" id="how">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">How it works</span>
+        <h2>Why it says 70% when other apps say 1%</h2>
+        <p>Most apps show the chance of aurora directly overhead. You don't need it overhead: a phone camera can catch it hundreds of kilometres away, low toward the pole.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <h3>Live space weather</h3>
+          <p>About every 15 minutes the app checks the Kp index and the solar wind, a download of a couple of kilobytes. NOAA's full OVATION aurora map is fetched when you open the app or when activity nears your alert level.</p>
+        </div>
+        <div class="step">
+          <h3>Your sky</h3>
+          <p>It works out your magnetic latitude, how far toward the pole aurora is still visible on your horizon, when it is properly dark, how bright the moon is, and the cloud forecast.</p>
+        </div>
+        <div class="step">
+          <h3>One answer</h3>
+          <p>You get a camera chance, a naked-eye chance, the best time tonight and the Kp your town needs. Everything is calculated on your phone; there is no server in between.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== SCREENS ============================== -->
+  <section class="block alt" id="screens">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Inside the app</span>
+        <h2>Dark screens for dark skies</h2>
+      </div>
+      <div class="gallery">
+        <figure><div class="frame"><img src="assets/aurora-radar/shot-tonight.webp" width="540" height="1200" loading="lazy" alt="Tonight screen with the camera chance, naked-eye chance and the next 24 hours"></div><figcaption>Tonight<span>Chance, verdict and best time</span><em>Simulated storm example</em></figcaption></figure>
+        <figure><div class="frame"><img src="assets/aurora-radar/shot-map.webp" width="540" height="1200" loading="lazy" alt="Live aurora map with the probability colour scale"></div><figcaption>Map<span>NOAA's live aurora oval</span></figcaption></figure>
+        <figure><div class="frame"><img src="assets/aurora-radar/shot-forecast.webp" width="540" height="1200" loading="lazy" alt="Forecast screen with the G scale, the Kp chart and NOAA alerts"></div><figcaption>Forecast<span>Kp, storms and NOAA alerts</span><em>Simulated storm example</em></figcaption></figure>
+        <figure><div class="frame"><img src="assets/aurora-radar/shot-alerts.webp" width="540" height="1200" loading="lazy" alt="Alert settings with alert levels, places and quiet hours"></div><figcaption>Alerts<span>Levels, places, quiet hours</span></figcaption></figure>
+        <figure><div class="frame"><img src="assets/aurora-radar/shot-guide.webp" width="540" height="1200" loading="lazy" alt="Guide article on photographing aurora with a phone"></div><figcaption>Guide<span>Phone photography tips</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== KP GUIDE ============================== -->
+  <section class="block" id="kp">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Kp guide</span>
+        <h2>What Kp does my town need?</h2>
+      </div>
+      <div class="kp-wrap">
+        <div class="prose-lite">
+          <p><strong>Kp</strong> is a planetary index from 0 to 9 that measures how disturbed Earth's magnetic field is, worked out every 3 hours from magnetometers around the world.</p>
+          <p>The aurora forms an oval around each magnetic pole. When Kp rises the oval grows and moves away from the pole; each step moves its edge roughly 2° of magnetic latitude. NOAA names storms by Kp: <strong>G1</strong> (minor) at Kp 5, G2 at 6, G3 at 7, G4 at 8 and <strong>G5</strong> (extreme) at 9.</p>
+          <p>Kp is a 3-hour average for the whole planet. A substorm can bring a bright display while Kp is modest, and a high Kp doesn't guarantee a show where you are. That is why the app also watches the solar wind and NOAA's aurora map.</p>
+        </div>
+        <div>
+          <div class="table-wrap">
+            <table class="kp-table" id="kp-table">
+              <thead><tr><th>Place</th><th>Kp for a good camera chance*</th></tr></thead>
+              <tbody>
+                <tr data-kp="1"><td>Tromsø, Norway</td><td>0–1</td></tr>
+                <tr data-kp="1"><td>Fairbanks, Alaska</td><td>0–1</td></tr>
+                <tr data-kp="1"><td>Reykjavík, Iceland</td><td>0–1</td></tr>
+                <tr data-kp="4"><td>Edinburgh, Scotland</td><td>about 4</td></tr>
+                <tr data-kp="4"><td>Hobart, Tasmania</td><td>about 4</td></tr>
+                <tr data-kp="5.5"><td>London, England</td><td>about 5.5</td></tr>
+                <tr data-kp="5.5"><td>Minneapolis, USA</td><td>about 5.5</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="note">*From Aurora Radar's model for a 30% chance on a phone camera in full darkness with clear skies. Highlighted rows are within reach at NOAA's forecast peak for the next 3 days.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== PHOTO TIPS ============================== -->
+  <section class="block alt" id="photo">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Free guide</span>
+        <h2>How to photograph aurora with your phone</h2>
+        <p>Phone cameras often see colour your eyes miss. These six steps get most people their first shot.</p>
+      </div>
+      <ol class="tips">
+        <li><strong>Go dark</strong>Get away from streetlights and give your eyes 15 minutes to adjust.</li>
+        <li><strong>Keep still</strong>Use a tripod or rest the phone on something steady; even night mode needs a few seconds.</li>
+        <li><strong>Night mode, toward the pole</strong>Aim at the brightest part of the sky toward the pole: north in the northern hemisphere, south in the southern.</li>
+        <li><strong>Manual mode if you have it</strong>Start at 4–8 seconds, ISO 800–1600, focus at infinity, flash off, on the main (1×) camera.</li>
+        <li><strong>Take a test shot anyway</strong>A grey glow to your eyes can be green or purple on camera.</li>
+        <li><strong>Mind the cold</strong>Batteries drain fast; keep the phone and a power bank in an inside pocket.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============================== FREE VS PRO ============================== -->
+  <section class="block" id="plans">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Free and Pro</span>
+        <h2>The forecast is free. Always.</h2>
+        <p>The free version shows a few muted ads. Aurora Radar Pro is optional and removes them.</p>
+      </div>
+      <div class="plans">
+        <div class="plan">
+          <h3>Free</h3>
+          <p>Everything you need to know whether to go outside.</p>
+          <ul class="checks">
+            <li>Tonight's camera and naked-eye chance</li>
+            <li>Live aurora map for both hemispheres</li>
+            <li>3-day Kp forecast and NOAA alerts</li>
+            <li>Alerts for one place, with quiet hours</li>
+            <li>Home-screen widget and the photo and Kp guides</li>
+            <li>Pro alerts or the 27-day outlook for 24 hours, by choosing to watch a short ad</li>
+          </ul>
+        </div>
+        <div class="plan pro">
+          <h3>Aurora Radar Pro <span class="tag">Optional</span></h3>
+          <p>For chasers, photographers and trips.</p>
+          <ul class="checks">
+            <li>No ads, anywhere</li>
+            <li>Substorm alerts when the solar wind turns strongly south</li>
+            <li>Wake-me-up alerts for big shows during quiet hours</li>
+            <li>Up to 5 places, for trips and holidays</li>
+            <li>NOAA's 27-day geomagnetic outlook</li>
+          </ul>
+          <p class="fineprint">Monthly, yearly or a one-time lifetime purchase, billed by Google Play in your currency. The app shows the exact price and any trial end date before you pay. Cancel any time in Google Play.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== PRIVACY ============================== -->
+  <section class="block alt" id="privacy">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Privacy</span>
+        <h2>Your places are yours</h2>
+        <p>Aurora Radar has no account and no server of its own. The <a href="aurora-radar-privacy.html">privacy policy</a> has every detail.</p>
+      </div>
+      <div class="grid grid-3">
+        <article class="card"><h3>Places stay on your phone</h3><p>Saved towns and settings are stored on the device. Only a rounded location (about 1 km) is sent to MET Norway to get the cloud forecast.</p></article>
+        <article class="card"><h3>Location only when you ask</h3><p>Approximate location is used only when you tap "Use my approximate location". No background location, ever.</p></article>
+        <article class="card"><h3>You choose</h3><p>Usage statistics and crash reports are optional and can be switched off in Settings at any time. Analytics never feed ads.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== FAQ ============================== -->
+  <section class="block" id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">FAQ</span>
+        <h2>Questions people ask</h2>
+      </div>
+      <div class="faq">
+        <details><summary>Is the forecast guaranteed?</summary><p>No. The aurora is hard to predict. Aurora Radar's chances are estimates built from NOAA data, darkness, moonlight and the cloud forecast. They are a guide to when it is worth going outside, not a promise.</p></details>
+        <details><summary>Why are the camera and naked-eye chances different?</summary><p>A phone camera collects light for several seconds and records faint green and purple, including aurora far away and low on the horizon. Your eyes need a brighter display, and moonlight washes out faint aurora for the eye much more than for a camera.</p></details>
+        <details><summary>What Kp do I need?</summary><p>It depends on your magnetic latitude. Under the auroral oval (Tromsø, Fairbanks, Reykjavík) Kp 0 to 1 is often enough on a dark, clear night. Edinburgh and Hobart need about Kp 4 for a good chance on a phone camera, London and Minneapolis about Kp 5.5. The app shows the number for your own town.</p></details>
+        <details><summary>Does it work in the southern hemisphere?</summary><p>Yes. It works for the aurora australis too, for example in Tasmania and New Zealand, and the live map has a southern view.</p></details>
+        <details><summary>How quickly do alerts arrive?</summary><p>The app checks about every 15 minutes, and every 10 minutes after dark when activity is close to your alert level. Battery saver or restricting the app in Android settings can delay alerts.</p></details>
+        <details><summary>Do I need an account? Where is my data?</summary><p>No account. Your places and settings are stored on your phone. The app downloads public data from NOAA, and sends MET Norway your place's location rounded to about 1 km to get the cloud forecast. Without a connection it shows the last forecast it downloaded.</p></details>
+        <details><summary>What does Pro cost, and can I cancel?</summary><p>Pro is available monthly, yearly or as a one-time lifetime purchase. Google Play shows the exact price in your currency before you pay. Subscriptions can be cancelled any time in Google Play under Payments &amp; subscriptions, and you keep Pro until the end of the paid period.</p></details>
+        <details><summary>When can I download it?</summary><p>Aurora Radar is in testing and coming to Google Play soon. This page will link to it as soon as it is available. It needs Android 8.0 or later and is in English.</p></details>
+      </div>
+      <p class="disclaimer"><b>Forecasts are estimates.</b> Aurora Radar can't guarantee a display, and alerts can be delayed by your phone's network or battery settings. Stay safe outdoors at night: dress for the cold, never stop on roads, and don't rely on the app for navigation. Aurora Radar is independent and not affiliated with or endorsed by NOAA or MET Norway.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="inner">
+    <span>&copy; <span id="year">2026</span> Levon Momchyan</span>
+    <nav aria-label="Footer">
+      <a href="index.html">All apps</a>
+      <a href="aurora-radar-privacy.html">Privacy Policy</a>
+      <a href="aurora-radar-terms.html">Terms of Use</a>
+      <a href="mailto:levonmyan22@gmail.com?subject=Aurora%20Radar">Contact</a>
+    </nav>
+    <p class="credits">Space weather: NOAA Space Weather Prediction Center (public domain). Cloud forecast: MET Norway (CC BY 4.0, NLOD 2.0). Towns: GeoNames (CC BY 4.0). Coastlines: Natural Earth.</p>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  $("year").textContent = new Date().getFullYear();
+
+  const NOW_URL = "https://services.swpc.noaa.gov/json/planetary_k_index_1m.json";
+  const FORECAST_URL = "https://services.swpc.noaa.gov/products/noaa-planetary-k-index-forecast.json";
+  const LEVELS = [
+    { min: 9, name: "G5 · extreme storm", color: "#ff6fae" },
+    { min: 8, name: "G4 · severe storm", color: "#ff6fae" },
+    { min: 7, name: "G3 · strong storm", color: "#ff6fae" },
+    { min: 6, name: "G2 · moderate storm", color: "#9a6bff" },
+    { min: 5, name: "G1 · minor storm", color: "#3df5a6" },
+    { min: 4, name: "Active", color: "#22c3c9" },
+    { min: 0, name: "Quiet", color: "#4a5a92" }
+  ];
+  // NOAA's G scale counts Kp 5- (4.67) as Kp 5, so levels use the nearest whole Kp.
+  const level = kp => LEVELS.find(l => Math.round(kp) >= l.min);
+  const utc = tag => new Date(tag.endsWith("Z") ? tag : tag + "Z");
+  const fmt1 = kp => (Math.round(kp * 10) / 10).toFixed(1);
+  const dayFmt = new Intl.DateTimeFormat(undefined, { weekday: "short" });
+  const whenFmt = new Intl.DateTimeFormat(undefined, { weekday: "short", hour: "numeric" });
+  const timeFmt = new Intl.DateTimeFormat(undefined, { hour: "numeric", minute: "2-digit" });
+
+  // The forecast product has been served both as objects and as a header row plus arrays.
+  function rows(json) {
+    if (!Array.isArray(json) || !json.length) return [];
+    if (!Array.isArray(json[0])) return json;
+    const [head, ...rest] = json;
+    return rest.map(r => Object.fromEntries(head.map((h, i) => [h, r[i]])));
+  }
+
+  async function getJson(url) {
+    const res = await fetch(url, { cache: "no-store" });
+    if (!res.ok) throw new Error(res.status);
+    return res.json();
+  }
+
+  function showNow(list) {
+    const last = list[list.length - 1];
+    const kp = Number(last.estimated_kp ?? last.kp_index);
+    const lv = level(kp);
+    $("kp-now").textContent = fmt1(kp);
+    const arc = $("kp-arc"), len = arc.getTotalLength();
+    arc.setAttribute("stroke-dasharray", `${Math.max(0.5, Math.min(kp, 9) / 9 * len)} ${len}`);
+    const pill = $("kp-level");
+    pill.style.color = lv.color;
+    pill.querySelector("span").textContent = lv.name;
+    pill.querySelector("span").style.color = "var(--text)";
+    $("kp-updated").textContent = `Updated ${timeFmt.format(utc(last.time_tag))} your time`;
+  }
+
+  function showForecast(list) {
+    const now = Date.now();
+    const data = list
+      .map(r => ({ t: utc(r.time_tag), kp: Number(r.kp), kind: r.observed }))
+      .filter(r => Number.isFinite(r.kp) && r.t.getTime() >= now - 24 * 3600e3);
+    if (!data.length) throw new Error("empty forecast");
+
+    const future = data.filter(r => r.kind === "predicted" && r.t.getTime() + 3 * 3600e3 > now);
+    const peak = future.reduce((a, b) => (b.kp > a.kp ? b : a), future[0] || data[data.length - 1]);
+
+    const bars = $("kp-bars"), days = $("kp-days");
+    bars.innerHTML = `<div class="line" style="bottom:${5 / 9 * 100}%"><span>G1</span></div>`;
+    days.innerHTML = "";
+    for (const r of data) {
+      const b = document.createElement("div");
+      b.className = "bar" + (r.kind === "predicted" ? " predicted" : "") + (r === peak ? " peak" : "");
+      b.style.height = Math.max(3, r.kp / 9 * 100) + "%";
+      b.style.background = level(r.kp).color;
+      b.title = `${whenFmt.format(r.t)}: Kp ${fmt1(r.kp)}${r.kind === "predicted" ? " (forecast)" : ""}`;
+      bars.appendChild(b);
+      const d = document.createElement("span");
+      d.textContent = r.t.getHours() < 3 ? dayFmt.format(r.t) : "";
+      days.appendChild(d);
+    }
+    bars.setAttribute("aria-label", `Kp chart. Highest forecast: Kp ${fmt1(peak.kp)} around ${whenFmt.format(peak.t)}.`);
+
+    $("kp-peak").innerHTML = `Highest in NOAA's forecast: <b>Kp ${fmt1(peak.kp)}</b> (${level(peak.kp).name}) around ${whenFmt.format(peak.t)} your time.`;
+
+    const reach = $("kp-reach");
+    reach.innerHTML = "";
+    const rowsEl = [...document.querySelectorAll("#kp-table tbody tr")];
+    const inReach = rowsEl.filter(tr => peak.kp >= Number(tr.dataset.kp));
+    rowsEl.forEach(tr => tr.classList.toggle("in-reach", inReach.includes(tr)));
+    const intro = document.createElement("p");
+    intro.className = "note";
+    intro.style.flexBasis = "100%";
+    intro.textContent = inReach.length
+      ? "At that peak a phone camera could catch it from these places, if it is dark and clear there at the time:"
+      : "Quiet: only places right under the auroral oval are likely to see aurora.";
+    reach.appendChild(intro);
+    for (const tr of rowsEl) {
+      const c = document.createElement("span");
+      c.className = "chip" + (inReach.includes(tr) ? " on" : "");
+      c.textContent = tr.cells[0].textContent.split(",")[0];
+      reach.appendChild(c);
+    }
+  }
+
+  Promise.allSettled([getJson(NOW_URL), getJson(FORECAST_URL)]).then(([now, forecast]) => {
+    let nowOk = false, forecastOk = false;
+    try { if (now.status === "fulfilled" && now.value.length) { showNow(now.value); nowOk = true; } } catch (e) {}
+    try { if (forecast.status === "fulfilled") { showForecast(rows(forecast.value)); forecastOk = true; } } catch (e) {}
+    if (!nowOk) $("kp-level").querySelector("span").textContent = "Unavailable";
+    if (!forecastOk) $("kp-peak").textContent = "NOAA's forecast is unavailable right now.";
+    if (!nowOk && !forecastOk) { $("live-panel").hidden = true; $("live-error").hidden = false; }
+  });
+})();
+</script>
+</body>
+</html>
